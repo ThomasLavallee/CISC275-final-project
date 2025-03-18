@@ -49,6 +49,7 @@ function App() {
       Team Members:
       Thomas Lavallee
       Brayan Hernandez
+      Matthew Stone
     </div>
   );
 }
