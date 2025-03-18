@@ -48,6 +48,7 @@ function App() {
       </Form>
       Team Members:
       Thomas Lavallee
+      Brayan Hernandez
     </div>
   );
 }
