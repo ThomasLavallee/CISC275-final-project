@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "react-bootstrap";
+import './ComponentStyles.css'
 
 interface QuizDescriptionProps {
     quizType: "Basic" | "Detailed",
@@ -8,8 +9,8 @@ interface QuizDescriptionProps {
 
 export function QuizDescription({quizType, description}: QuizDescriptionProps): React.JSX.Element {
     
-    return <div className="quizDescription">
-        <div className="quizDescriptionContainer">
+    return <div className="Quiz-Description">
+        <div className="Description-Container">
             <ul>
             {
                 description.map((sentence: string) => {
@@ -18,6 +19,6 @@ export function QuizDescription({quizType, description}: QuizDescriptionProps): 
             }
             </ul>
         </div>
-        <Button>Begin {quizType} Quiz</Button>
+        <Button>Begin <br></br>{quizType} Quiz</Button>
     </div>
 }

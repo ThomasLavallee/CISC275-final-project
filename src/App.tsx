@@ -26,15 +26,18 @@ function App() {
   }
 
   const basicCareerDescription: string[] = ["Identify your career interests quickly", "Answer 20 simple questions in minutes", "Receive detailed report of career interests and personality traits"]
-  const detailedCareerDescription: string[] = [""];
+  const detailedCareerDescription: string[] = ["Understand your career desires in detail", "Receive detailed report"];
 
   return (
     <div className="App">
-      <header className="App-header">
+      <header>
         
       </header>
-      <QuizDescription quizType='Basic' description={basicCareerDescription}></QuizDescription>
-      <QuizDescription quizType='Detailed' description={detailedCareerDescription}></QuizDescription>
+      <div className='Homepage-Container'>
+        <QuizDescription quizType='Basic' description={basicCareerDescription}></QuizDescription>
+        <QuizDescription quizType='Detailed' description={detailedCareerDescription}></QuizDescription>
+      </div>
+
       <Form>
         <Form.Label>API Key:</Form.Label>
         <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>

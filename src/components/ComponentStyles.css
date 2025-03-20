@@ -1,0 +1,9 @@
+.Description-Container {
+    border: solid;
+    margin-bottom: 2vh;
+    text-align: left;
+}
+
+.Quiz-Description {
+    width: 30%;
+}
