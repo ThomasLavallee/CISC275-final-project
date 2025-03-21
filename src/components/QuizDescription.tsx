@@ -1,14 +1,14 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import './ComponentStyles.css'
+import { Link } from "react-router-dom";
 
 interface QuizDescriptionProps {
-    quizType: "Basic" | "Detailed",
+    quizType: "BasicQuiz" | "DetailedQuiz",
     description: string[]
   }
 
 export function QuizDescription({quizType, description}: QuizDescriptionProps): React.JSX.Element {
-    
     return <div className="Quiz-Description">
         <div className="Description-Container">
             <ul>
@@ -19,6 +19,8 @@ export function QuizDescription({quizType, description}: QuizDescriptionProps): 
             }
             </ul>
         </div>
-        <Button>Begin <br></br>{quizType} Quiz</Button>
+        <Link to={`/${quizType}`}>
+            <Button>Begin <br></br>{quizType}</Button>
+        </Link>
     </div>
 }

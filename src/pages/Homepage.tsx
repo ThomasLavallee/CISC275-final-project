@@ -33,8 +33,8 @@ export function Homepage(): React.JSX.Element {
         </header>
 
         <div className='Homepage-Container'>
-            <QuizDescription quizType='Basic' description={basicCareerDescription}></QuizDescription>
-            <QuizDescription quizType='Detailed' description={detailedCareerDescription}></QuizDescription>
+            <QuizDescription quizType='BasicQuiz' description={basicCareerDescription}></QuizDescription>
+            <QuizDescription quizType='DetailedQuiz' description={detailedCareerDescription}></QuizDescription>
         </div>
 
         <Form>
