@@ -1,5 +1,6 @@
 .Description-Container {
     border: solid;
+    border-radius: 1vh;
     margin-bottom: 2vh;
     text-align: left;
 }
