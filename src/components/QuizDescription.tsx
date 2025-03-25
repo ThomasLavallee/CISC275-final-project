@@ -9,7 +9,12 @@ interface QuizDescriptionProps {
   }
 
 export function QuizDescription({quizType, description}: QuizDescriptionProps): React.JSX.Element {
+    // Format the quiz title
+    const regex = new RegExp(`(\\Q)`, 'g'); 
+    const formattedTitle: string = quizType.replace(regex, ` $1`);;
+
     return <div className="Quiz-Description">
+        <h4>{formattedTitle}:</h4>
         <div className="Description-Container">
             <ul>
             {
@@ -20,7 +25,7 @@ export function QuizDescription({quizType, description}: QuizDescriptionProps): 
             </ul>
         </div>
         <Link to={`/${quizType}`}>
-            <Button>Begin <br></br>{quizType}</Button>
+            <Button>Begin <br></br>{formattedTitle}</Button>
         </Link>
     </div>
 }

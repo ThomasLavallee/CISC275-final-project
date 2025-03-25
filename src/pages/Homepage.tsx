@@ -12,7 +12,7 @@ if (prevKey !== null) {
 
 export function Homepage(): React.JSX.Element {
     const basicCareerDescription: string[] = ["Identify your career interests quickly", "Answer 20 simple questions in minutes", "Receive detailed report of career interests and personality traits"]
-    const detailedCareerDescription: string[] = ["Understand your career desires in detail", "Receive detailed report"];
+    const detailedCareerDescription: string[] = ["Understand your career desires in detail", "Receive detailed report of career interests, personality traits, and workplace preferences", "Provides insights into specific roles, including required skills and typical work environments"];
     
     const [key, setKey] = useState<string>(keyData); //for api key input
       
