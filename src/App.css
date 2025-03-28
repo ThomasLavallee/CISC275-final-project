@@ -43,3 +43,13 @@
   justify-content: space-between;
   flex-wrap: wrap;
 }
+
+.Homepage-Instructions {
+  border: solid;
+  border-radius: 1vh;
+  text-align: left;
+}
+
+.Instruction-Container {
+  width: 30%;
+}
