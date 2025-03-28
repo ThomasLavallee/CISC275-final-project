@@ -40,12 +40,12 @@ All files             |       0 |        0 |       0 |       0 |
  src/pages            |       0 |        0 |       0 |       0 |                   
   BasicQuiz.tsx       |       0 |      100 |       0 |       0 | 6                 
   DetailedQuiz.tsx    |       0 |      100 |       0 |       0 | 6                 
-  Homepage.tsx        |       0 |        0 |       0 |       0 | 6-30              
+  Homepage.tsx        |       0 |        0 |       0 |       0 | 6-42              
 ----------------------|---------|----------|---------|---------|-------------------
 Test Suites: 1 failed, 1 total
 Tests:       0 total
 Snapshots:   0 total
-Time:        2.663 s
+Time:        2.631 s
 Ran all test suites.
 [0;33mOne of your dependencies, babel-preset-react-app, is importing the
 "@babel/plugin-proposal-private-property-in-object" package without
