@@ -11,7 +11,7 @@ FAIL src/App.test.tsx
       src/App.tsx
       src/App.test.tsx
 
-      1 | import React from 'react';
+      1 | import React, { useState } from 'react';
       2 | import './App.css';
     > 3 | import { HashRouter, Routes, Route } from 'react-router-dom';
         | ^
@@ -32,20 +32,20 @@ File                  | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line 
 ----------------------|---------|----------|---------|---------|-------------------
 All files             |       0 |        0 |       0 |       0 |                   
  src                  |       0 |        0 |       0 |       0 |                   
-  App.tsx             |       0 |      100 |       0 |       0 | 10                
+  App.tsx             |       0 |        0 |       0 |       0 | 10-32             
   index.tsx           |       0 |      100 |     100 |       0 | 7-19              
   reportWebVitals.ts  |       0 |        0 |       0 |       0 | 3-10              
  src/components       |       0 |      100 |       0 |       0 |                   
   QuizDescription.tsx |       0 |      100 |       0 |       0 | 13-22             
- src/pages            |       0 |        0 |       0 |       0 |                   
+ src/pages            |       0 |      100 |       0 |       0 |                   
   BasicQuiz.tsx       |       0 |      100 |       0 |       0 | 6                 
   DetailedQuiz.tsx    |       0 |      100 |       0 |       0 | 6                 
-  Homepage.tsx        |       0 |        0 |       0 |       0 | 6-42              
+  Homepage.tsx        |       0 |      100 |       0 |       0 | 5-20              
 ----------------------|---------|----------|---------|---------|-------------------
 Test Suites: 1 failed, 1 total
 Tests:       0 total
 Snapshots:   0 total
-Time:        2.631 s
+Time:        2.684 s
 Ran all test suites.
 [0;33mOne of your dependencies, babel-preset-react-app, is importing the
 "@babel/plugin-proposal-private-property-in-object" package without
