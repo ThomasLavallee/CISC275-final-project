@@ -37,19 +37,21 @@
   }
 }
 
-.Homepage-Container {
+.Whole-Homepage{
+  display: flex;
+  flex-wrap:wrap;
+
+}
+
+.Homepage-Container { 
+
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
-}
-
-.Homepage-Instructions {
-  border: solid;
-  border-radius: 1vh;
-  text-align: left;
-}
-
-.Instruction-Container {
-  width: 30%;
+  
+  /* Added CSS*/
+  padding-bottom:10%;
+  padding-top: 6%;
+  gap:1%;
 }

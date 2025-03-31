@@ -29,6 +29,7 @@ export function Homepage(): React.JSX.Element {
     }
 
     return <div>
+      <div className = 'Whole-Homepage'>
         <header>
         
         </header>
@@ -59,5 +60,8 @@ export function Homepage(): React.JSX.Element {
         Thomas Lavallee
         Brayan Hernandez
         Matthew Stone
+
+
+      </div>
   </div>
 }
