@@ -7,6 +7,7 @@ export function Homepage(): React.JSX.Element {
   const detailedCareerDescription: string[] = ["Understand your career desires in detail", "Receive detailed report of career interests, personality traits, and workplace preferences", "Provides insights into specific roles, including required skills and typical work environments"];
 
     return <div>
+      <div className = 'Whole-Homepage'>
         <header>
         
         </header>

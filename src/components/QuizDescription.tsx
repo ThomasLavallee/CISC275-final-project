@@ -16,7 +16,7 @@ export function QuizDescription({quizType, description}: QuizDescriptionProps): 
     return <div className="Quiz-Description">
         <h4>{formattedTitle}:</h4>
         <div className="Description-Container">
-            <ul>
+            <ul className="Quiz-Description-Text">
             {
                 description.map((sentence: string) => {
                     return <li>{sentence}</li>
@@ -24,8 +24,11 @@ export function QuizDescription({quizType, description}: QuizDescriptionProps): 
             }
             </ul>
         </div>
-        <Link to={`/${quizType}`}>
-            <Button>Begin <br></br>{formattedTitle}</Button>
-        </Link>
+
+        <div className="Begin-Quiz-Buttons">
+            <Link to={`/${quizType}`}>
+                <Button id="Begin-Buttons">Begin <br></br>{formattedTitle}</Button>
+            </Link>
+        </div>
     </div>
 }
