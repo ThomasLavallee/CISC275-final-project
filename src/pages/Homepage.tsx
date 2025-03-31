@@ -27,5 +27,6 @@ export function Homepage(): React.JSX.Element {
             <QuizDescription quizType='BasicQuiz' description={basicCareerDescription}></QuizDescription>
             <QuizDescription quizType='DetailedQuiz' description={detailedCareerDescription}></QuizDescription>
         </div>
+    </div>
   </div>
 }
