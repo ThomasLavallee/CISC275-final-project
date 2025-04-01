@@ -1,31 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import './ComponentStyles.css'
-import { Link } from "react-router-dom";
+import { Form } from "react-bootstrap";
 
 interface BasicQuestionProps {
-    quizType: "BasicQuiz" | "DetailedQuiz",
-    description: string[]
+    question: string,
+    options: string[]
+    questionNumber: number
   }
+//Basic Question template that contains the question, answer choices, and question number
+export function BasicQuestion({question, options, questionNumber}: BasicQuestionProps): React.JSX.Element {
 
-export function BasicQuestion({quizType, description}: BasicQuestionProps): React.JSX.Element {
-    // Format the quiz title
-    const regex = new RegExp(`(\\Q)`, 'g'); 
-    const formattedTitle: string = quizType.replace(regex, ` $1`);;
+    const [choice, setChoice] = useState<string>(options[0]);
+
+    function updateChoice(event: React.ChangeEvent<HTMLSelectElement>) {
+        setChoice(event.target.value);
+    }
 
     return <div className="Quiz-Description">
-        <h4>{formattedTitle}:</h4>
-        <div className="Description-Container">
-            <ul>
-            {
-                description.map((sentence: string) => {
-                    return <li>{sentence}</li>
-                })
-            }
-            </ul>
-        </div>
-        <Link to={`/${quizType}`}>
-            <Button>Begin <br></br>{formattedTitle}</Button>
-        </Link>
+        <h4>Question {questionNumber}:</h4>
+        <Form.Group controlId="question">
+                <Form.Label>{question}</Form.Label>
+                <Form.Select value={choice} onChange={updateChoice}>
+                    {options.map((option: string) => (
+                        <option key={option} value={option}>
+                            {option}
+                        </option>
+                    ))}
+                </Form.Select>
+            </Form.Group>
     </div>
 }
