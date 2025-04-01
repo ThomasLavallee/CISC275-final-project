@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import { Button } from "react-bootstrap";
-import './ComponentStyles.css'
+import './ComponentStyles.css';
 import { Form } from "react-bootstrap";
 
 interface BasicQuestionProps {
     question: string,
-    options: string[]
+    options: string[],
     questionNumber: number
   }
 //Basic Question template that contains the question, answer choices, and question number
