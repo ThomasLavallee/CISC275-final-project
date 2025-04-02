@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import './ComponentStyles.css';
+import './HomepageComponentStyles.css';
 import { Form } from "react-bootstrap";
 
 interface BasicQuestionProps {
