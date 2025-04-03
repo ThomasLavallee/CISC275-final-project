@@ -6,15 +6,15 @@ import './BasicQuizComponentStyles.css';
 
 
 export function BasicQuiz(): React.JSX.Element {
-
     const [questionNumber, setQuestionNumber] = useState<number>(1)
 
     // All ten of the basic questions given in this quiz
     const basicQuestions = ["Favorite Color?", "Favorite Food?"]
     // All ten sets of answer choices for the questions in this quiz
     const basicOptions = [["red", "green", "blue"], ["apple", "beans", "cat"]]
+    
     // Number of questions
-    const numOfQuestions = 10
+    const numQuestions: number = basicQuestions.length;
 
     return <div>
         <div className="Basic-Quiz-Page">
@@ -31,9 +31,9 @@ export function BasicQuiz(): React.JSX.Element {
 
             <div className="Basic-Quiz-Column">
                 <Button className="Basic-Quiz-Navigation-Button" onClick={() => {setQuestionNumber(questionNumber-1)}} disabled={questionNumber===1}>Previous</Button>
-                <Button className="Basic-Quiz-Navigation-Button" onClick={() => {setQuestionNumber(questionNumber+1)}} disabled={questionNumber===10}>Next</Button>
+                <Button className="Basic-Quiz-Navigation-Button" onClick={() => {setQuestionNumber(questionNumber+1)}} disabled={questionNumber===numQuestions}>Next</Button>
                 <br></br>
-                <Button className="Basic-Quiz-Navigation-Button" disabled={questionNumber!==10}>Get Results</Button>
+                <Button className="Basic-Quiz-Navigation-Button" disabled={questionNumber !== numQuestions}>Get Results</Button>
             </div>
         </div>
     </div>
