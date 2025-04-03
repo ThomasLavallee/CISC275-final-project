@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import './ComponentStyles.css';
+import '../pages/BasicQuizComponentStyles.css';
 import { Form } from "react-bootstrap";
 
 interface BasicQuestionProps {
@@ -16,17 +16,22 @@ export function BasicQuestion({question, options, questionNumber}: BasicQuestion
         setChoice(event.target.value);
     }
 
-    return <div className="Quiz-Description">
-        <h4>Question {questionNumber}:</h4>
-        <Form.Group controlId="question">
-                <Form.Label>{question}</Form.Label>
-                <Form.Select value={choice} onChange={updateChoice}>
-                    {options.map((option: string) => (
-                        <option key={option} value={option}>
-                            {option}
-                        </option>
-                    ))}
-                </Form.Select>
-            </Form.Group>
+    return <div>
+
+        <div className="Basic-Quiz-Question">
+            {/* <h4 id="Question-Label">Question {questionNumber}:</h4> */}
+            <Form.Group controlId="question">
+                <h4 id="Question-Label">Question {questionNumber}:</h4>
+                    <Form.Label>{question}</Form.Label>
+                    <Form.Select id="Question-Dropdown" value={choice} onChange={updateChoice}>
+                        {options.map((option: string) => (
+                            <option key={option} value={option}>
+                                {option}
+                            </option>
+                        ))}
+                    </Form.Select>
+                </Form.Group>
+
+            </div>
     </div>
 }

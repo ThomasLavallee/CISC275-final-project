@@ -1,10 +1,7 @@
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+  font-size: 1.3vw;
+  background-color: #806550;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -15,7 +12,7 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 80vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -37,21 +34,13 @@
   }
 }
 
-.Whole-Homepage{
-  display: flex;
-  flex-wrap:wrap;
-
+.Submit-Button{
+  font-size: 1.2vw
 }
 
-.Homepage-Container { 
-
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  
-  /* Added CSS*/
-  padding-bottom:10%;
-  padding-top: 6%;
-  gap:1%;
+.API-Key-Menu{
+  background-color: #806550;
+}
+#API-Input{
+  font-size:1.3vw;
 }

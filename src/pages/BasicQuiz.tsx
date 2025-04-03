@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BasicQuestion } from '../components/BasicQuestion';
 import { Button } from 'react-bootstrap';
+import './BasicQuizComponentStyles.css';
 
 
 export function BasicQuiz(): React.JSX.Element {
@@ -16,16 +17,24 @@ export function BasicQuiz(): React.JSX.Element {
     const numOfQuestions = 10
 
     return <div>
-        <Link to={"/"}>
-           <Button>Home</Button>
-        </Link>
-        <Button disabled={true}>Basic Quiz</Button>
-        <br></br>
-        <BasicQuestion questionNumber={questionNumber} question={basicQuestions[questionNumber-1]} options={basicOptions[questionNumber-1]}></BasicQuestion>
-        <br></br>
-        <Button onClick={() => {setQuestionNumber(questionNumber-1)}} disabled={questionNumber===1}>Previous</Button>
-        <Button onClick={() => {setQuestionNumber(questionNumber+1)}} disabled={questionNumber===numOfQuestions}>Next</Button>
-        <br></br>
-        <Button disabled={questionNumber!==numOfQuestions}>Get Results</Button>
+        <div className="Basic-Quiz-Page">
+            <div className="Basic-Quiz-Column">
+                <Link to={"/"}>
+                <Button className="Page-Navigation-Buttons">Home</Button>
+                </Link>
+
+                <Button  className="Page-Navigation-Buttons" disabled={true}>Basic Quiz</Button>
+                <br></br>
+                <BasicQuestion questionNumber={questionNumber} question={basicQuestions[questionNumber-1]} options={basicOptions[questionNumber-1]}></BasicQuestion>
+                <br></br>
+            </div>
+
+            <div className="Basic-Quiz-Column">
+                <Button className="Basic-Quiz-Navigation-Button" onClick={() => {setQuestionNumber(questionNumber-1)}} disabled={questionNumber===1}>Previous</Button>
+                <Button className="Basic-Quiz-Navigation-Button" onClick={() => {setQuestionNumber(questionNumber+1)}} disabled={questionNumber===10}>Next</Button>
+                <br></br>
+                <Button className="Basic-Quiz-Navigation-Button" disabled={questionNumber!==10}>Get Results</Button>
+            </div>
+        </div>
     </div>
 }
