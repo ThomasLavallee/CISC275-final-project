@@ -1,0 +1,42 @@
+.Basic-Quiz-Page{
+    display:flex;
+    min-height:75vh;
+    flex-wrap:wrap;
+    gap: 2%;
+    min-width:100vh;
+    align-items: center;
+
+    /*background-color: #BDDEEC;*/
+    /* background-color: #806550; */
+
+}
+
+.Basic-Quiz-Column{
+    width:15vw;
+    align-items: center;
+}
+.Basic-Quiz-Question{
+    min-width: 8vw; 
+}
+
+#Question-Label{ /* for each questions label*/
+    /* font-size:1.4vw; */
+    padding-top: 2vh;
+    font-size: 120%;
+}
+
+#Question-Dropdown{
+    font-size: 100%;
+    padding-bottom: 2vh;
+    width: 80%
+}
+
+.Page-Navigation-Buttons{
+    font-size: 1.3vw;
+    padding-left: 5%;
+    padding-right:5%
+}
+
+.Basic-Quiz-Navigation-Button{
+    font-size: 1.3vw;
+}
