@@ -16,25 +16,27 @@ export function BasicQuiz(): React.JSX.Element {
     // Number of questions
     const numQuestions: number = basicQuestions.length;
 
-    return <div>
-        <div className="Basic-Quiz-Page">
-            <div className="Basic-Quiz-Column">
-                <Link to={"/"}>
-                <Button className="Page-Navigation-Buttons">Home</Button>
-                </Link>
+    return <div className="Basic-Quiz-Page">
+        
 
-                <Button  className="Page-Navigation-Buttons" disabled={true}>Basic Quiz</Button>
-                <br></br>
-                <BasicQuestion questionNumber={questionNumber} question={basicQuestions[questionNumber-1]} options={basicOptions[questionNumber-1]}></BasicQuestion>
-                <br></br>
-            </div>
+        <div className="Basic-Page-Navigation-Buttons">
+            <Link to={"/"}>
+            <Button>Home</Button>
+            </Link>
 
-            <div className="Basic-Quiz-Column">
-                <Button className="Basic-Quiz-Navigation-Button" onClick={() => {setQuestionNumber(questionNumber-1)}} disabled={questionNumber===1}>Previous</Button>
-                <Button className="Basic-Quiz-Navigation-Button" onClick={() => {setQuestionNumber(questionNumber+1)}} disabled={questionNumber===numQuestions}>Next</Button>
-                <br></br>
-                <Button className="Basic-Quiz-Navigation-Button" disabled={questionNumber !== numQuestions}>Get Results</Button>
-            </div>
+            <Button disabled={true}>Basic Quiz</Button>
+
         </div>
+        
+        <br></br>
+        <div className="Basic-Quiz-Question-Wrapper">
+            <BasicQuestion questionNumber={questionNumber} question={basicQuestions[questionNumber-1]} options={basicOptions[questionNumber-1]}></BasicQuestion>
+            <br></br>
+            <Button id="Basic-Quiz-Prev-Next-Button" onClick={() => {setQuestionNumber(questionNumber-1)}} disabled={questionNumber===1}>Previous</Button>
+            <Button id="Basic-Quiz-Prev-Next-Button" onClick={() => {setQuestionNumber(questionNumber+1)}} disabled={questionNumber===numQuestions}>Next</Button>
+        </div>
+        <br></br>
+        <Button className="Basic-Quiz-Navigation-Button" disabled={questionNumber!==numQuestions}>Get Results</Button>
+
     </div>
 }

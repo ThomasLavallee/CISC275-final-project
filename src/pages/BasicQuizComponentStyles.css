@@ -1,23 +1,34 @@
 .Basic-Quiz-Page{
-    display:flex;
+    display: grid;
     min-height:75vh;
     flex-wrap:wrap;
     gap: 2%;
-    min-width:100vh;
-    align-items: center;
+    min-width:100vw;
 
+    /* justify-content: center; */
+    /* align-items: center; */
     /*background-color: #BDDEEC;*/
     /* background-color: #806550; */
 
 }
 
-.Basic-Quiz-Column{
-    width:15vw;
-    align-items: center;
+.Basic-Quiz-Question-Wrapper{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5%;
+    min-width: 16vw; 
+    align-self: center;
+    justify-self: center;
+    height: fit-content;
 }
-.Basic-Quiz-Question{
-    min-width: 8vw; 
+#Basic-Quiz-Prev-Next-Button{
+    text-align: center;
+    font-size: 100%;
+    height:fit-content;
+    align-self: flex-end;
+    width: 100%;
 }
+
 
 #Question-Label{ /* for each questions label*/
     /* font-size:1.4vw; */
@@ -27,16 +38,27 @@
 
 #Question-Dropdown{
     font-size: 100%;
-    padding-bottom: 2vh;
-    width: 80%
+    padding-bottom: 2vh;    
+    min-width: 5vw;
+    width:fit-content;
+
 }
 
-.Page-Navigation-Buttons{
-    font-size: 1.3vw;
-    padding-left: 5%;
-    padding-right:5%
+.Basic-Page-Navigation-Buttons{
+    display: flex;
+    margin-left: 2vw;
+    margin-top: 1vw;
+    font-size: 100%;
+    height: fit-content;
+    min-width: fit-content;
+    gap: 1vw;
+
 }
 
 .Basic-Quiz-Navigation-Button{
+    width:fit-content;
     font-size: 1.3vw;
+    height:fit-content;
+    align-self:baseline;
+    justify-self: center;
 }
