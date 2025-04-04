@@ -13,6 +13,8 @@ export function BasicQuiz(): React.JSX.Element {
     const basicQuestions = ["Favorite Color?", "Favorite Food?"]
     // All ten sets of answer choices for the questions in this quiz
     const basicOptions = [["red", "green", "blue"], ["apple", "beans", "cat"]]
+    // Number of questions
+    const numOfQuestions = 10
 
     return <div className="Basic-Quiz-Page">
         
