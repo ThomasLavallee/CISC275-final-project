@@ -28,6 +28,14 @@ function App(): React.JSX.Element {
     setKey(event.target.value);
   }
 
+  // Set up the ChatGPT API
+  function setupAPI() {
+    // Update the key
+    handleSubmit();
+
+    //alert(localStorage.getItem(saveKeyData));
+  }
+
   // Routing info to go to the correct page
   return (
     <div className="App">
@@ -44,7 +52,7 @@ function App(): React.JSX.Element {
           <Form.Label>API Key:</Form.Label>
           <Form.Control id="API-Input" type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
           <br></br>
-          <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
+          <Button className="Submit-Button" type="button" onClick={setupAPI}>Submit</Button>
         </Form>
 
         Made By:
