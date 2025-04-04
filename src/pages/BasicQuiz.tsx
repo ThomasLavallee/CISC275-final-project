@@ -30,9 +30,11 @@ export function BasicQuiz(): React.JSX.Element {
         
         <br></br>
         <div className="Basic-Quiz-Question-Wrapper">
+            <br></br>
             <BasicQuestion questionNumber={questionNumber} question={basicQuestions[questionNumber-1]} options={basicOptions[questionNumber-1]}></BasicQuestion>
             <br></br>
             <Button id="Basic-Quiz-Prev-Next-Button" onClick={() => {setQuestionNumber(questionNumber-1)}} disabled={questionNumber===1}>Previous</Button>
+            <br></br>
             <Button id="Basic-Quiz-Prev-Next-Button" onClick={() => {setQuestionNumber(questionNumber+1)}} disabled={questionNumber===numQuestions}>Next</Button>
         </div>
         <br></br>

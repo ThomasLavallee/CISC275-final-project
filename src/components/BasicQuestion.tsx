@@ -16,7 +16,7 @@ export function BasicQuestion({question, options, questionNumber}: BasicQuestion
         setChoice(event.target.value);
     }
 
-    return <div>
+    return <div className="Basic-Question">
 
         <div>
             {/* <h4 id="Question-Label">Question {questionNumber}:</h4> */}

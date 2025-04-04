@@ -14,18 +14,21 @@
 
 .Basic-Quiz-Question-Wrapper{
     display:grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5%;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 2fr 1fr; 
+    gap: 0%;
     min-width: 16vw; 
     align-self: center;
     justify-self: center;
-    height: fit-content;
 }
+
+
 #Basic-Quiz-Prev-Next-Button{
     text-align: center;
     font-size: 100%;
     height:fit-content;
-    align-self: flex-end;
+    align-self: center;
+    justify-self: center;
     width: 100%;
 }
 
@@ -41,6 +44,7 @@
     padding-bottom: 2vh;    
     min-width: 5vw;
     width:fit-content;
+    justify-self: center;
 
 }
 
