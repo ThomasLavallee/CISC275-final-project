@@ -6,13 +6,13 @@ import './BasicQuizComponentStyles.css';
 
 
 export function BasicQuiz(): React.JSX.Element {
-
     const [questionNumber, setQuestionNumber] = useState<number>(1)
 
     // All ten of the basic questions given in this quiz
     const basicQuestions = ["Favorite Color?", "Favorite Food?"]
     // All ten sets of answer choices for the questions in this quiz
     const basicOptions = [["red", "green", "blue"], ["apple", "beans", "cat"]]
+    
     // Number of questions
     const numQuestions: number = basicQuestions.length;
 
@@ -25,6 +25,7 @@ export function BasicQuiz(): React.JSX.Element {
             </Link>
 
             <Button disabled={true}>Basic Quiz</Button>
+
         </div>
         
         <br></br>
