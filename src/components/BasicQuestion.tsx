@@ -18,7 +18,7 @@ export function BasicQuestion({question, options, questionNumber}: BasicQuestion
 
     return <div>
 
-        <div className="Basic-Quiz-Question">
+        <div>
             {/* <h4 id="Question-Label">Question {questionNumber}:</h4> */}
             <Form.Group controlId="question">
                 <h4 id="Question-Label">Question {questionNumber}:</h4>
