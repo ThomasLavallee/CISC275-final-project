@@ -14,7 +14,7 @@ export function BasicQuiz(): React.JSX.Element {
     // All ten sets of answer choices for the questions in this quiz
     const basicOptions = [["red", "green", "blue"], ["apple", "beans", "cat"]]
     // Number of questions
-    const numOfQuestions = 10
+    const numQuestions: number = basicQuestions.length;
 
     return <div className="Basic-Quiz-Page">
         
@@ -32,10 +32,10 @@ export function BasicQuiz(): React.JSX.Element {
             <BasicQuestion questionNumber={questionNumber} question={basicQuestions[questionNumber-1]} options={basicOptions[questionNumber-1]}></BasicQuestion>
             <br></br>
             <Button id="Basic-Quiz-Prev-Next-Button" onClick={() => {setQuestionNumber(questionNumber-1)}} disabled={questionNumber===1}>Previous</Button>
-            <Button id="Basic-Quiz-Prev-Next-Button" onClick={() => {setQuestionNumber(questionNumber+1)}} disabled={questionNumber===10}>Next</Button>
+            <Button id="Basic-Quiz-Prev-Next-Button" onClick={() => {setQuestionNumber(questionNumber+1)}} disabled={questionNumber===numQuestions}>Next</Button>
         </div>
         <br></br>
-        <Button className="Basic-Quiz-Navigation-Button" disabled={questionNumber!==10}>Get Results</Button>
+        <Button className="Basic-Quiz-Navigation-Button" disabled={questionNumber!==numQuestions}>Get Results</Button>
 
     </div>
 }
