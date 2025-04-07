@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import '../pages/DetailedQuizComponentStyles.css';
 import { Form } from "react-bootstrap";
 
 interface DetailedQuestionProps {

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { DetailedQuestion } from '../components/DetailedQuestion';
 import { Button } from 'react-bootstrap';
+import './DetailedQuizComponentStyles.css';
 
 
 export function DetailedQuiz(): React.JSX.Element {
