@@ -40,7 +40,10 @@
 
 .API-Key-Menu{
   background-color: #806550;
+  justify-self: left;
+  margin-left: 2vw;
 }
 #API-Input{
   font-size:1.3vw;
+
 }
