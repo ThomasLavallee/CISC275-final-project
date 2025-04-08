@@ -2,7 +2,8 @@
     display: flex;
     flex-wrap:wrap;
     min-height: 80vh;
-    background-color: #806550;
+    /* background-color: #806550; */
+    background-color: var(--main-background-color);
 }
 
 .Homepage-Container { 
@@ -22,7 +23,8 @@
     border: solid;
     border-radius: 2vh;
     text-align: left;
-    background-color:chocolate;
+    /* background-color:chocolate; */
+    background-color: whitesmoke;
     min-height: 100%;
   }  
 
@@ -30,7 +32,8 @@
     border: solid;
     border-radius: 1vh;
     text-align: left;
-    background-color: rgb(227, 140, 33);
+    /* background-color: rgb(227, 140, 33); */
+    background-color: white;
     min-height:50vh
 }
 
