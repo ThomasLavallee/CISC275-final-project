@@ -19,7 +19,6 @@ export function BasicQuestion({question, options, questionNumber}: BasicQuestion
     return <div className="Basic-Question">
 
         <div>
-            {/* <h4 id="Question-Label">Question {questionNumber}:</h4> */}
             <Form.Group controlId="question">
                 <h4 id="Question-Label">Question {questionNumber}:</h4>
                     <Form.Label>{question}</Form.Label>
@@ -31,7 +30,6 @@ export function BasicQuestion({question, options, questionNumber}: BasicQuestion
                         ))}
                     </Form.Select>
                 </Form.Group>
-
             </div>
     </div>
 }
