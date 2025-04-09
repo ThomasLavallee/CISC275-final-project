@@ -42,8 +42,11 @@ export function BasicQuiz({validAPI}: BasicQuizProps): React.JSX.Element {
             <Button id="Basic-Quiz-Prev-Next-Button" onClick={() => {setQuestionNumber(questionNumber+1)}} disabled={questionNumber===numQuestions}>Next</Button>
         </div>
         <br></br>
-        <Link to={"/Results"}>
-            <Button className="Basic-Quiz-Navigation-Button" disabled={(questionNumber!==numQuestions) || !validAPI}>Get Results</Button>
-        </Link>
+        <Button className="Basic-Quiz-Navigation-Button" disabled={(questionNumber!==numQuestions) || !validAPI}>
+            <Link to={"/Results"} style={{color: "white", textDecoration: "none"}}>
+            Get Results
+            </Link>
+        </Button>
+        
     </div>
 }
