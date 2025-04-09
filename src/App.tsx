@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import OpenAI from "openai";
 import './App.css';
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import { Homepage } from './pages/Homepage';
@@ -16,6 +17,9 @@ if (prevKey !== null) {
 
 function App(): React.JSX.Element {
   const [key, setKey] = useState<string>(keyData); //for api key input
+
+  // API connection, will get set when view results is clicked
+  let client;
         
   //sets the local storage item to the api key the user inputed
   function handleSubmit() {
@@ -28,12 +32,33 @@ function App(): React.JSX.Element {
     setKey(event.target.value);
   }
 
-  // Set up the ChatGPT API
-  function setupAPI() {
-    // Update the key
-    handleSubmit();
+  // Sets up the ChatGPT API, sets client
+  async function setupAPI() {
+    // Make sure API key saved
+    if (key === null) {
+      return;
+    }
 
-    //alert(localStorage.getItem(saveKeyData));
+    // Try to connect to API
+    try {
+      client = new OpenAI({apiKey: key, dangerouslyAllowBrowser: true});
+      
+      // Tries to ping the API
+      const completion = await client.chat.completions.create({
+        model: "gpt-4o",
+        messages: [
+            {
+                role: "user",
+                content: "Write a one-sentence bedtime story about a unicorn.",
+            },
+        ],
+      });
+
+      console.log(completion.choices[0].message.content);
+    }
+    catch (error) {
+      alert(error);
+    }
   }
 
   // Routing info to go to the correct page
@@ -52,7 +77,9 @@ function App(): React.JSX.Element {
           <Form.Label>API Key:</Form.Label>
           <Form.Control id="API-Input" type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
           <br></br>
-          <Button className="Submit-Button" type="button" onClick={setupAPI}>Submit</Button>
+          <Button className="Submit-Button" type="button" onClick={handleSubmit}>Submit</Button>
+
+          <Button onClick={setupAPI}>Test API</Button>
         </Form>
 
         Made By:
