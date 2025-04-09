@@ -18,8 +18,8 @@ export function QuizDescription({quizType, description}: QuizDescriptionProps): 
         <div className="Description-Container">
             <ul className="Quiz-Description-Text">
             {
-                description.map((sentence: string) => {
-                    return <li>{sentence}</li>
+                description.map((sentence: string, index: number) => {
+                    return <li key={index}>{sentence}</li>
                 })
             }
             </ul>

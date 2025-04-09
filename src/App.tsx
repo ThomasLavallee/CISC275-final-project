@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import OpenAI from "openai";
 import './App.css';
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import { Homepage } from './pages/Homepage';
@@ -16,6 +17,10 @@ if (prevKey !== null) {
 
 function App(): React.JSX.Element {
   const [key, setKey] = useState<string>(keyData); //for api key input
+  const [APIValid, setAPIValid] = useState<boolean>(false); // Checks if API key is valid
+
+  // API connection, will get set when view results is clicked
+  let client;
         
   //sets the local storage item to the api key the user inputed
   function handleSubmit() {
@@ -26,6 +31,37 @@ function App(): React.JSX.Element {
   //whenever there's a change it'll store the api key in a local state called key but it won't be set in the local storage until the user clicks the submit button
   function changeKey(event: React.ChangeEvent<HTMLInputElement>) {
     setKey(event.target.value);
+  }
+
+  // Sets up the ChatGPT API, sets client
+  async function setupAPI() {
+    // Make sure API key saved
+    if (key === null) {
+      return;
+    }
+
+    // Try to connect to API
+    try {
+      client = new OpenAI({apiKey: key, dangerouslyAllowBrowser: true});
+      
+      // Tries to ping the API
+      const completion = await client.chat.completions.create({
+        model: "gpt-4o",
+        messages: [
+            {
+                role: "user",
+                content: "Write a one-sentence bedtime story about a unicorn.",
+            },
+        ],
+      });
+
+      console.log(completion.choices[0].message.content);
+      setAPIValid(true);
+    }
+    catch (error) {
+      alert(error);
+      setAPIValid(false);
+    }
   }
 
   // Routing info to go to the correct page
@@ -42,9 +78,14 @@ function App(): React.JSX.Element {
       <footer className="API-Key-Menu">
         <Form>
           <Form.Label>API Key:</Form.Label>
+          {
+            (APIValid) ? <span> API Key is Valid</span> : <span> API Key is Invalid</span>
+          }
           <Form.Control id="API-Input" type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
           <br></br>
-          <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
+          <Button className="Submit-Button" type="button" onClick={handleSubmit}>Submit</Button>
+
+          <Button onClick={setupAPI}>Test API</Button>
         </Form>
 
         Made By:
