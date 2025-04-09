@@ -19,7 +19,7 @@ if (prevKey !== null) {
 function App(): React.JSX.Element {
   const [key, setKey] = useState<string>(keyData); //for api key input
   const [APIValid, setAPIValid] = useState<boolean>(false); // Checks if API key is valid
-  const [currentQuiz, setQuizType] = useState<string>("Basic");
+  const [currentQuiz, setQuizType] = useState<string>("Basic"); // Track quiz type taken
 
   // API connection, will get set when view results is clicked
   let client = new OpenAI({apiKey: key, dangerouslyAllowBrowser: true});;

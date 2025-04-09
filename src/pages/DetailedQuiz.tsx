@@ -24,8 +24,9 @@ export function DetailedQuiz(): React.JSX.Element {
             <Button>Home</Button>
             </Link>
 
-            <Button disabled={true}>Detailed Quiz</Button>
-
+            <Link to={"/BasicQuiz"}>
+                <Button disabled={true}>Basic Quiz</Button>
+            </Link>
         </div>
         
         <br></br>
