@@ -19,6 +19,7 @@ if (prevKey !== null) {
 function App(): React.JSX.Element {
   const [key, setKey] = useState<string>(keyData); //for api key input
   const [APIValid, setAPIValid] = useState<boolean>(false); // Checks if API key is valid
+  const [currentQuiz, setQuizType] = useState<string>("Basic");
 
   // API connection, will get set when view results is clicked
   let client = new OpenAI({apiKey: key, dangerouslyAllowBrowser: true});;
@@ -70,10 +71,10 @@ function App(): React.JSX.Element {
     <div className="App">
       <HashRouter>
         <Routes>
-          <Route path="/" element={<Homepage />}></Route>
+          <Route path="/" element={<Homepage setQuizType={setQuizType}/>}></Route>
           <Route path="/BasicQuiz" element={<BasicQuiz />}></Route>
           <Route path="/DetailedQuiz" element={<DetailedQuiz />}></Route>
-          <Route path='/Results' element={<ResultsPage quizType='Basic' userAnswers='' connection={client}/>}></Route>
+          <Route path='/Results' element={<ResultsPage quizType={currentQuiz} userAnswers='' connection={client}/>}></Route>
         </Routes>
       </HashRouter>
 

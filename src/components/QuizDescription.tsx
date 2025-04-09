@@ -1,14 +1,15 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { Button } from "react-bootstrap";
 import './HomepageComponentStyles.css'
 import { Link } from "react-router-dom";
 
 interface QuizDescriptionProps {
     quizType: "BasicQuiz" | "DetailedQuiz",
-    description: string[]
+    description: string[],
+    setQuizType: Dispatch<SetStateAction<string>>
   }
 
-export function QuizDescription({quizType, description}: QuizDescriptionProps): React.JSX.Element {
+export function QuizDescription({quizType, description, setQuizType}: QuizDescriptionProps): React.JSX.Element {
     // Format the quiz title
     const regex = new RegExp(`(\\Q)`, 'g'); 
     const formattedTitle: string = quizType.replace(regex, ` $1`);;
@@ -27,7 +28,13 @@ export function QuizDescription({quizType, description}: QuizDescriptionProps): 
 
         <div className="Begin-Quiz-Buttons">
             <Link to={`/${quizType}`}>
-                <Button id="Begin-Buttons">Begin <br></br>{formattedTitle}</Button>
+                <Button id="Begin-Buttons" onClick={() => {
+                    if (quizType === "BasicQuiz") {
+                        setQuizType("Basic");
+                    } else {
+                        setQuizType("Detailed");
+                    }
+                }}>Begin <br></br>{formattedTitle}</Button>
             </Link>
         </div>
     </div>

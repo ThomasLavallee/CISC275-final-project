@@ -38,7 +38,9 @@ export function DetailedQuiz(): React.JSX.Element {
             <Button id="Detailed-Quiz-Prev-Next-Button" onClick={() => {setQuestionNumber(questionNumber+1)}} disabled={questionNumber===numQuestions}>Next</Button>
         </div>
         <br></br>
-        <Button className="Detailed-Quiz-Navigation-Button" disabled={questionNumber!==numQuestions}>Get Results</Button>
 
+        <Link to={"/Results"}>
+            <Button className="Detailed-Quiz-Navigation-Button" disabled={questionNumber!==numQuestions}>Get Results</Button>
+        </Link>
     </div>
 }
