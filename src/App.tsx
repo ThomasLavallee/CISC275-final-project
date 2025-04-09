@@ -6,6 +6,7 @@ import { Homepage } from './pages/Homepage';
 import {BasicQuiz} from './pages/BasicQuiz'
 import { DetailedQuiz } from './pages/DetailedQuiz';
 import { Form, Button } from 'react-bootstrap';
+import { ResultsPage } from './pages/Results';
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -20,7 +21,7 @@ function App(): React.JSX.Element {
   const [APIValid, setAPIValid] = useState<boolean>(false); // Checks if API key is valid
 
   // API connection, will get set when view results is clicked
-  let client;
+  let client = new OpenAI({apiKey: key, dangerouslyAllowBrowser: true});;
         
   //sets the local storage item to the api key the user inputed
   function handleSubmit() {
@@ -44,22 +45,22 @@ function App(): React.JSX.Element {
     try {
       client = new OpenAI({apiKey: key, dangerouslyAllowBrowser: true});
       
-      // Tries to ping the API
+      // Tells the API how it will be acting
       const completion = await client.chat.completions.create({
         model: "gpt-4o",
         messages: [
             {
-                role: "user",
-                content: "Write a one-sentence bedtime story about a unicorn.",
+                role: "system",
+                content: "You generate career interests and recommendation reports. You will be given Question Answer pairs to either a basic or detailed quiz and must come up with career recommendations",
             },
         ],
       });
 
       console.log(completion.choices[0].message.content);
+
       setAPIValid(true);
     }
     catch (error) {
-      alert(error);
       setAPIValid(false);
     }
   }
@@ -72,6 +73,7 @@ function App(): React.JSX.Element {
           <Route path="/" element={<Homepage />}></Route>
           <Route path="/BasicQuiz" element={<BasicQuiz />}></Route>
           <Route path="/DetailedQuiz" element={<DetailedQuiz />}></Route>
+          <Route path='/Results' element={<ResultsPage quizType='Basic' userAnswers='' connection={client}/>}></Route>
         </Routes>
       </HashRouter>
 
@@ -79,7 +81,7 @@ function App(): React.JSX.Element {
         <Form>
           <Form.Label>API Key:</Form.Label>
           {
-            (APIValid) ? <span> API Key is Valid</span> : <span> API Key is Invalid</span>
+            (APIValid) ? <span style={{color: "Green"}}> API Key is Valid</span> : <span style={{color: "red"}}> API Key is Invalid</span>
           }
           <Form.Control id="API-Input" type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
           <br></br>
