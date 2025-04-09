@@ -72,8 +72,8 @@ function App(): React.JSX.Element {
       <HashRouter>
         <Routes>
           <Route path="/" element={<Homepage setQuizType={setQuizType}/>}></Route>
-          <Route path="/BasicQuiz" element={<BasicQuiz />}></Route>
-          <Route path="/DetailedQuiz" element={<DetailedQuiz />}></Route>
+          <Route path="/BasicQuiz" element={<BasicQuiz validAPI={APIValid}/>}></Route>
+          <Route path="/DetailedQuiz" element={<DetailedQuiz validAPI={APIValid}/>}></Route>
           <Route path='/Results' element={<ResultsPage quizType={currentQuiz} userAnswers='' connection={client}/>}></Route>
         </Routes>
       </HashRouter>

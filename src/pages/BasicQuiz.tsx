@@ -4,8 +4,11 @@ import { BasicQuestion } from '../components/BasicQuestion';
 import { Button } from 'react-bootstrap';
 import './BasicQuizComponentStyles.css';
 
+interface BasicQuizProps {
+    validAPI: boolean
+}
 
-export function BasicQuiz(): React.JSX.Element {
+export function BasicQuiz({validAPI}: BasicQuizProps): React.JSX.Element {
     const [questionNumber, setQuestionNumber] = useState<number>(1)
 
     // All ten of the basic questions given in this quiz
@@ -25,7 +28,7 @@ export function BasicQuiz(): React.JSX.Element {
             </Link>
 
             <Link to={"/DetailedQuiz"}>
-                <Button disabled={true}>Detailed Quiz</Button>
+                <Button>Detailed Quiz</Button>
             </Link>
         </div>
         
@@ -40,7 +43,7 @@ export function BasicQuiz(): React.JSX.Element {
         </div>
         <br></br>
         <Link to={"/Results"}>
-            <Button className="Basic-Quiz-Navigation-Button" disabled={questionNumber!==numQuestions}>Get Results</Button>
+            <Button className="Basic-Quiz-Navigation-Button" disabled={(questionNumber!==numQuestions) || !validAPI}>Get Results</Button>
         </Link>
     </div>
 }
