@@ -11,16 +11,16 @@ FAIL src/App.test.tsx
       src/App.tsx
       src/App.test.tsx
 
-      1 | import React, { useState } from 'react';
-      2 | import './App.css';
-    > 3 | import { HashRouter, Routes, Route } from 'react-router-dom';
+      2 | import OpenAI from "openai";
+      3 | import './App.css';
+    > 4 | import { HashRouter, Routes, Route } from 'react-router-dom';
         | ^
-      4 | import { Homepage } from './pages/Homepage';
-      5 | import {BasicQuiz} from './pages/BasicQuiz'
-      6 | import { DetailedQuiz } from './pages/DetailedQuiz';
+      5 | import { Homepage } from './pages/Homepage';
+      6 | import {BasicQuiz} from './pages/BasicQuiz'
+      7 | import { DetailedQuiz } from './pages/DetailedQuiz';
 
       at Resolver.resolveModule (node_modules/jest-resolve/build/resolver.js:324:11)
-      at Object.<anonymous> (src/App.tsx:3:1)
+      at Object.<anonymous> (src/App.tsx:4:1)
       at Object.<anonymous> (src/App.test.tsx:3:1)
       at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
       at runJest (node_modules/@jest/core/build/runJest.js:404:19)
@@ -32,7 +32,7 @@ File                   | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line
 -----------------------|---------|----------|---------|---------|-------------------
 All files              |       0 |        0 |       0 |       0 |                   
  src                   |       0 |        0 |       0 |       0 |                   
-  App.tsx              |       0 |        0 |       0 |       0 | 10-32             
+  App.tsx              |       0 |        0 |       0 |       0 | 11-68             
   index.tsx            |       0 |      100 |     100 |       0 | 7-19              
   reportWebVitals.ts   |       0 |        0 |       0 |       0 | 3-10              
  src/components        |       0 |      100 |       0 |       0 |                   
@@ -47,7 +47,7 @@ All files              |       0 |        0 |       0 |       0 |
 Test Suites: 1 failed, 1 total
 Tests:       0 total
 Snapshots:   0 total
-Time:        2.833 s
+Time:        2.92 s
 Ran all test suites.
 [0;33mOne of your dependencies, babel-preset-react-app, is importing the
 "@babel/plugin-proposal-private-property-in-object" package without
