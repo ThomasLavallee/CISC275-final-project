@@ -17,6 +17,7 @@ if (prevKey !== null) {
 
 function App(): React.JSX.Element {
   const [key, setKey] = useState<string>(keyData); //for api key input
+  const [APIValid, setAPIValid] = useState<boolean>(false); // Checks if API key is valid
 
   // API connection, will get set when view results is clicked
   let client;
@@ -55,9 +56,11 @@ function App(): React.JSX.Element {
       });
 
       console.log(completion.choices[0].message.content);
+      setAPIValid(true);
     }
     catch (error) {
       alert(error);
+      setAPIValid(false);
     }
   }
 
@@ -75,6 +78,9 @@ function App(): React.JSX.Element {
       <footer className="API-Key-Menu">
         <Form>
           <Form.Label>API Key:</Form.Label>
+          {
+            (APIValid) ? <span> API Key is Valid</span> : <span> API Key is Invalid</span>
+          }
           <Form.Control id="API-Input" type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
           <br></br>
           <Button className="Submit-Button" type="button" onClick={handleSubmit}>Submit</Button>
