@@ -89,7 +89,7 @@ function App(): React.JSX.Element {
         </Form>
         
 
-        Made By:
+        Developed By:
         Thomas Lavallee,
         Brayan Hernandez,
         Matthew Stone

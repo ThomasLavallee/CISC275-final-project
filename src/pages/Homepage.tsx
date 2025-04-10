@@ -15,7 +15,7 @@ export function Homepage({setQuizType}: HomepageProps): React.JSX.Element {
         <header>
         
         </header>
-
+        Career Portal
         <div className='Homepage-Container'>
             <div className='Instruction-Container'>
               <h4>Instructions:</h4>
