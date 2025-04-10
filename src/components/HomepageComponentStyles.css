@@ -20,6 +20,7 @@
   }
 
 .Homepage-Instructions {
+    padding-top: 4%;
     border: solid;
     border-radius: 2vh;
     text-align: left;
@@ -29,6 +30,7 @@
   }  
 
 .Description-Container {
+    padding-top: 5%;
     border: solid;
     border-radius: 1vh;
     text-align: left;

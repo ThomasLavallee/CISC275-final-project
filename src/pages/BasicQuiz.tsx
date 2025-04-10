@@ -27,8 +27,13 @@ export function BasicQuiz(): React.JSX.Element {
             <Button disabled={true}>Basic Quiz</Button>
 
         </div>
-        
-        <br></br>
+
+        <div className="Basic-Progress-Bar-Wrapper">
+            <div className="Basic-Progress-Bar-Border">
+                <div style={{ width: `${(questionNumber/basicQuestions.length) * 100}%` }} className="Basic-Progress-Bar">{(questionNumber/basicQuestions.length) * 100}%</div>
+            </div>
+        </div>
+
         <div className="Basic-Quiz-Question-Wrapper">
             <br></br>
             <BasicQuestion questionNumber={questionNumber} question={basicQuestions[questionNumber-1]} options={basicOptions[questionNumber-1]}></BasicQuestion>

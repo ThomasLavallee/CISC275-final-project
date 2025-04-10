@@ -28,7 +28,12 @@ export function DetailedQuiz(): React.JSX.Element {
 
         </div>
         
-        <br></br>
+        <div className="Detailed-Progress-Bar-Wrapper">
+            <div className="Detailed-Progress-Bar-Border">
+                <div style={{ width: `${(questionNumber/DetailedQuestions.length) * 100}%` }} className="Detailed-Progress-Bar">{(questionNumber/DetailedQuestions.length) * 100}%</div>
+            </div>
+        </div>
+
         <div className="Detailed-Quiz-Question-Wrapper">
             <br></br>
             <DetailedQuestion questionNumber={questionNumber} question={DetailedQuestions[questionNumber-1]} options={DetailedOptions[questionNumber-1]}></DetailedQuestion>

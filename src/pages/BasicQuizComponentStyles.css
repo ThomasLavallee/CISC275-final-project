@@ -12,6 +12,25 @@
 
 }
 
+.Basic-Progress-Bar-Wrapper{
+    width: 45vw;
+    justify-self: center;
+    align-self: center;
+}
+.Basic-Progress-Bar-Border{
+    border:solid;   
+    border-color: black;   
+    border-radius: 6px;
+    background-color: var(--progress-bar-color);
+
+}
+.Basic-Progress-Bar{
+    background-color: rgb(58, 237, 58);
+    border-radius: 4px;
+    justify-self: start;
+    width: 50%;
+}
+
 .Basic-Quiz-Question-Wrapper{
     display:grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -20,6 +39,9 @@
     min-width: 16vw; 
     align-self: center;
     justify-self: center;
+    border: solid;
+    border-radius: 6px;
+    border-width: 2px;
 }
 
 
