@@ -12,6 +12,25 @@
 
 }
 
+.Detailed-Progress-Bar-Wrapper{
+    width: 45vw;
+    justify-self: center;
+    align-self: center;
+}
+.Detailed-Progress-Bar-Border{
+    border:solid;   
+    border-color: black;   
+    border-radius: 6px;
+    background-color: var(--progress-bar-color);
+
+}
+.Detailed-Progress-Bar{
+    background-color: rgb(58, 237, 58);
+    border-radius: 4px;
+    justify-self: start;
+    width: 50%;
+}
+
 .Detailed-Quiz-Question-Wrapper{
     display:grid;
     grid-template-columns: 1fr 1fr 1fr;
