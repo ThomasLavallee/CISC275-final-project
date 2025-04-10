@@ -19,15 +19,16 @@ if (prevKey !== null) {
 function App(): React.JSX.Element {
   const [key, setKey] = useState<string>(keyData); //for api key input
   const [APIValid, setAPIValid] = useState<boolean>(false); // Checks if API key is valid
+  const [currentQuiz, setQuizType] = useState<string>("Basic"); // Track quiz type taken
 
   // API connection, will get set when view results is clicked
   let client = new OpenAI({apiKey: key, dangerouslyAllowBrowser: true});;
         
   //sets the local storage item to the api key the user inputed
-  function handleSubmit() {
-    localStorage.setItem(saveKeyData, JSON.stringify(key));
-    window.location.reload(); //when making a mistake and changing the key again, I found that I have to reload the whole site before openai refreshes what it has stores for the local storage variable
-  }
+  // function handleSubmit() {
+  //   localStorage.setItem(saveKeyData, JSON.stringify(key));
+  //   window.location.reload(); //when making a mistake and changing the key again, I found that I have to reload the whole site before openai refreshes what it has stores for the local storage variable
+  // }
 
   //whenever there's a change it'll store the api key in a local state called key but it won't be set in the local storage until the user clicks the submit button
   function changeKey(event: React.ChangeEvent<HTMLInputElement>) {
@@ -65,15 +66,15 @@ function App(): React.JSX.Element {
     }
   }
 
-  // Routing info to go to the correct page
+  // Routing info to go to the correct page and API input box
   return (
     <div className="App">
       <HashRouter>
         <Routes>
-          <Route path="/" element={<Homepage />}></Route>
-          <Route path="/BasicQuiz" element={<BasicQuiz />}></Route>
-          <Route path="/DetailedQuiz" element={<DetailedQuiz />}></Route>
-          <Route path='/Results' element={<ResultsPage quizType='Basic' userAnswers='' connection={client}/>}></Route>
+          <Route path="/" element={<Homepage setQuizType={setQuizType}/>}></Route>
+          <Route path="/BasicQuiz" element={<BasicQuiz validAPI={APIValid}/>}></Route>
+          <Route path="/DetailedQuiz" element={<DetailedQuiz validAPI={APIValid}/>}></Route>
+          <Route path='/Results' element={<ResultsPage quizType={currentQuiz} userAnswers='' connection={client}/>}></Route>
         </Routes>
       </HashRouter>
 
@@ -84,13 +85,11 @@ function App(): React.JSX.Element {
             (APIValid) ? <span style={{color: "Green"}}> API Key is Valid</span> : <span style={{color: "red"}}> API Key is Invalid</span>
           }
           <Form.Control id="API-Input" type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
-          <br></br>
-          <Button className="Submit-Button" type="button" onClick={handleSubmit}>Submit</Button>
-
-          <Button onClick={setupAPI}>Test API</Button>
+          <Button className="Submit-Button" type="button" onClick={setupAPI}>Submit</Button>
         </Form>
+        
 
-        Made By:
+        Developed By:
         Thomas Lavallee,
         Brayan Hernandez,
         Matthew Stone
