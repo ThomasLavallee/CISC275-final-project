@@ -43,8 +43,10 @@ export function DetailedQuiz({validAPI}: DetailedQuizProps): React.JSX.Element {
         </div>
         <br></br>
 
-        <Link to={"/Results"}>
-            <Button className="Detailed-Quiz-Navigation-Button" disabled={(questionNumber!==numQuestions) || !validAPI}>Get Results</Button>
-        </Link>
+        <Button className="Basic-Quiz-Navigation-Button" disabled={(questionNumber!==numQuestions) || !validAPI}>
+                    <Link to={"/Results"} style={{color: "white", textDecoration: "none"}}>
+                    Get Results
+                    </Link>
+        </Button>
     </div>
 }
