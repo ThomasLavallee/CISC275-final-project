@@ -19,7 +19,6 @@ export function BasicQuiz({validAPI}: BasicQuizProps): React.JSX.Element {
     // Number of questions
     const numQuestions: number = basicQuestions.length;
     // State :)
-    const [questionNumber, setQuestionNumber] = useState<number>(1)
     const [answers, setAnswers] = useState<string[]>(Array(numQuestions).fill(""));
     // Full string of questions and answers
     let basicReport: string = ""
