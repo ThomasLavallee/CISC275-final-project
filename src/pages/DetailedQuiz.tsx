@@ -21,16 +21,17 @@ export function DetailedQuiz({validAPI}: DetailedQuizProps): React.JSX.Element {
 
     return <div className="Detailed-Quiz-Page">
         
+        <header className="Detailed-Quiz-Navbar">
+            <div className="Detailed-Page-Navigation-Buttons">
+                <Link to={"/"}>
+                <Button>Home</Button>
+                </Link>
 
-        <div className="Detailed-Page-Navigation-Buttons">
-            <Link to={"/"}>
-            <Button>Home</Button>
-            </Link>
-
-            <Link to={"/BasicQuiz"}>
-                <Button>Basic Quiz</Button>
-            </Link>
-        </div>
+                <Link to={"/BasicQuiz"}>
+                    <Button>Basic Quiz</Button>
+                </Link>
+            </div>
+        </header>
         
         <div className="Detailed-Progress-Bar-Wrapper">
             <div className="Detailed-Progress-Bar-Border">
@@ -39,12 +40,15 @@ export function DetailedQuiz({validAPI}: DetailedQuizProps): React.JSX.Element {
         </div>
 
         <div className="Detailed-Quiz-Question-Wrapper">
-            <br></br>
+            
             <DetailedQuestion questionNumber={questionNumber} question={DetailedQuestions[questionNumber-1]} options={DetailedOptions[questionNumber-1]}></DetailedQuestion>
-            <br></br>
-            <Button id="Detailed-Quiz-Prev-Next-Button" onClick={() => {setQuestionNumber(questionNumber-1)}} disabled={questionNumber===1}>Previous</Button>
-            <br></br>
-            <Button id="Detailed-Quiz-Prev-Next-Button" onClick={() => {setQuestionNumber(questionNumber+1)}} disabled={questionNumber===numQuestions}>Next</Button>
+            
+            <div id="Detailed-Quiz-Prev-Next-Wrapper">
+                
+                <Button id="Detailed-Quiz-Prev-Next-Button" onClick={() => {setQuestionNumber(questionNumber-1)}} disabled={questionNumber===1}>Previous</Button>
+
+                <Button id="Detailed-Quiz-Prev-Next-Button" onClick={() => {setQuestionNumber(questionNumber+1)}} disabled={questionNumber===numQuestions}>Next</Button>
+            </div>
         </div>
         <br></br>
 
