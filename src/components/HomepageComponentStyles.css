@@ -6,14 +6,17 @@
     background-color: var(--main-background-color);
 }
 
-.Homepage-Container { 
+#Homepage-Title{
+    display: flex;
+    margin-left: 40vw; 
+}
 
+.Homepage-Container { 
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
     
-    /* Added CSS*/
     padding-bottom:10%;
     padding-top: 6%;
     gap:1%;

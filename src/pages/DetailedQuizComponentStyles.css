@@ -12,6 +12,11 @@
 
 }
 
+.Detailed-Quiz-Navbar{
+    height: var(--navbar-height);
+    background-color: #010409;
+}
+
 .Detailed-Progress-Bar-Wrapper{
     width: 45vw;
     justify-self: center;
@@ -33,14 +38,22 @@
 
 .Detailed-Quiz-Question-Wrapper{
     display:grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr ;
     grid-template-rows: 2fr 1fr; 
     gap: 0%;
-    min-width: 16vw; 
+    min-width: 50vw; 
+    max-width: 70vw;
     align-self: center;
-    justify-self: center;   
+    justify-self: center;
+    border: solid;
+    border-radius: 6px;
+    border-width: 2px;
 }
 
+#Detailed-Quiz-Prev-Next-Wrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
 
 #Detailed-Quiz-Prev-Next-Button{
     text-align: center;
@@ -48,7 +61,7 @@
     height:fit-content;
     align-self: center;
     justify-self: center;
-    width: 100%;
+    width: 80%;
 }
 
 
@@ -69,13 +82,13 @@
 
 .Detailed-Page-Navigation-Buttons{
     display: flex;
-    margin-left: 2vw;
-    margin-top: 1vw;
+    margin-left: 1vw;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
     font-size: 100%;
     height: fit-content;
     min-width: fit-content;
     gap: 1vw;
-
 }
 
 .Detailed-Quiz-Navigation-Button{

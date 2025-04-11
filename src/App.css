@@ -1,6 +1,8 @@
 :root{ /*will hold things that can be used EVERYWHERE (all css files)*/
     --main-background-color: lightblue;
     --progress-bar-color: white;
+
+    --navbar-height: 8vh;
 }
 
 .App {
