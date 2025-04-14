@@ -7,6 +7,7 @@ import {BasicQuiz} from './pages/BasicQuiz'
 import { DetailedQuiz } from './pages/DetailedQuiz';
 import { Form, Button } from 'react-bootstrap';
 import { ResultsPage } from './pages/Results';
+import { Link } from 'react-router-dom' // for home and quiz buttons
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -68,34 +69,50 @@ function App(): React.JSX.Element {
 
   // Routing info to go to the correct page and API input box
   return (
-    
-    <div className="App">
-      <HashRouter>
-        <Routes>
-          <Route path="/" element={<Homepage setQuizType={setQuizType}/>}></Route>
-          <Route path="/BasicQuiz" element={<BasicQuiz validAPI={APIValid}/>}></Route>
-          <Route path="/DetailedQuiz" element={<DetailedQuiz validAPI={APIValid}/>}></Route>
-          <Route path='/Results' element={<ResultsPage quizType={currentQuiz} userAnswers='' connection={client}/>}></Route>
-        </Routes>
-      </HashRouter>
-
-      <footer className="API-Key-Menu">
-        <Form>
-          <Form.Label>API Key:</Form.Label>
-          {
-            (APIValid) ? <span style={{color: "Green"}}> API Key is Valid</span> : <span style={{color: "red"}}> API Key is Invalid</span>
-          }
-          <Form.Control id="API-Input" type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
-          <Button className="Submit-Button" type="button" onClick={setupAPI}>Submit</Button>
-        </Form>
+    <HashRouter>
+      <div className="App">
+        <header id="Navbar">
+        <span id="Navbar-Buttons-Wrapper">
+            <Link to="/">
+              <Button className="Navbar-Buttons">Home</Button>
+            </Link>
+            <Link to="/BasicQuiz">
+              <Button className="Navbar-Buttons">Basic Quiz</Button>
+            </Link>
+            <Link to="/DetailedQuiz">
+              <Button className="Navbar-Buttons">Detailed Quiz</Button>
+            </Link>
+          </span>
+          
+          <h2 style={{color: "white"}} id="Homepage-Title">Career Portal</h2> 
+          
+        </header>
         
+          <Routes>
+            <Route path="/" element={<Homepage setQuizType={setQuizType}/>}></Route>
+            <Route path="/BasicQuiz" element={<BasicQuiz validAPI={APIValid}/>}></Route>
+            <Route path="/DetailedQuiz" element={<DetailedQuiz validAPI={APIValid}/>}></Route>
+            <Route path='/Results' element={<ResultsPage quizType={currentQuiz} userAnswers='' connection={client}/>}></Route>
+          </Routes>
 
-        Developed By:
-        Thomas Lavallee,
-        Brayan Hernandez,
-        Matthew Stone
-      </footer>
-    </div>
+        <footer className="API-Key-Menu">
+          <Form>
+            <Form.Label>API Key:</Form.Label>
+            {
+              (APIValid) ? <span style={{color: "Green"}}> API Key is Valid</span> : <span style={{color: "red"}}> API Key is Invalid</span>
+            }
+            <Form.Control id="API-Input" type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
+            <Button className="Submit-Button" type="button" onClick={setupAPI}>Submit</Button>
+          </Form>
+          
+
+          Developed By:
+          Thomas Lavallee,
+          Brayan Hernandez,
+          Matthew Stone
+        </footer>
+      </div>
+    </HashRouter>
   );
 }
 

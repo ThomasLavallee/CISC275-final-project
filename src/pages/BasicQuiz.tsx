@@ -11,7 +11,6 @@ interface BasicQuizProps {
 
 export function BasicQuiz({validAPI}: BasicQuizProps): React.JSX.Element {
     const [questionNumber, setQuestionNumber] = useState<number>(1)
-
     // All ten of the basic questions given in this quiz
     const basicQuestions = ["Do you like working with people?", "Would you rather design or build something?", "Do you like working creatively?","Do you like leading others?","Do you prefer routine or variety at work?","Do you like working in hands-on environments?","Are you comfortable using technology?","Do you enjoy writing?","Would you rather work alone or in a team?","Do you enjoy public speaking?"]
     // All ten sets of answer choices for the questions in this quiz
@@ -28,18 +27,6 @@ export function BasicQuiz({validAPI}: BasicQuizProps): React.JSX.Element {
     if (basicReport) {}
 
     return <div className="Basic-Quiz-Page">
-        
-        <header className="Basic-Quiz-Navbar">
-            <div className="Basic-Page-Navigation-Buttons">
-                <Link to={"/"}>
-                <Button>Home</Button>
-                </Link>
-
-                <Link to={"/DetailedQuiz"}>
-                    <Button>Detailed Quiz</Button>
-                </Link>
-            </div>
-        </header>
         
 
         <div className="Basic-Progress-Bar-Wrapper">
@@ -60,12 +47,12 @@ export function BasicQuiz({validAPI}: BasicQuizProps): React.JSX.Element {
                 
                 <Button id="Basic-Quiz-Prev-Next-Button" onClick={() => {setQuestionNumber(questionNumber-1)}} disabled={questionNumber===1}>Previous</Button>
                 
-                <Button id="Basic-Quiz-Prev-Next-Button" onClick={() => {setQuestionNumber(questionNumber+1)}} disabled={questionNumber===numQuestions}>Next</Button>
+                <Button id="Basic-Quiz-Prev-Next-Button" onClick={() => {setQuestionNumber(questionNumber+1)}} disabled={questionNumber===numQuestions || answers[questionNumber-1]===""}>Next</Button>
             </div>
         </div>
         <br></br>
         
-        <Button className="Basic-Quiz-Navigation-Button" disabled={(questionNumber!==numQuestions && answers[questionNumber-1]!=="") || !validAPI}>
+        <Button className="Basic-Quiz-Navigation-Button" disabled={(questionNumber!==numQuestions) || !validAPI}>
             <Link to={"/Results"} style={{color: "white", textDecoration: "none"}}>
             Get Results
             </Link>
