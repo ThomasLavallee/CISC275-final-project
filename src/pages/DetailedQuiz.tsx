@@ -28,19 +28,6 @@ export function DetailedQuiz({validAPI}: DetailedQuizProps): React.JSX.Element {
 
     return <div className="Detailed-Quiz-Page">
         
-        <header className="Detailed-Quiz-Navbar">
-            <div className="Detailed-Page-Navigation-Buttons">
-                <Link to={"/"}>
-                <Button>Home</Button>
-                </Link>
-
-                <Link to={"/DetailedQuiz"}>
-                    <Button>Detailed Quiz</Button>
-                </Link>
-            </div>
-        </header>
-        
-
         <div className="Detailed-Progress-Bar-Wrapper">
             <div className="Detailed-Progress-Bar-Border">
                 <div style={{ width: `${(questionNumber/DetailedQuestions.length) * 100}%` }} className="Detailed-Progress-Bar">{(questionNumber/DetailedQuestions.length) * 100}%</div>

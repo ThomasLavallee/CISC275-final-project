@@ -28,18 +28,6 @@ export function BasicQuiz({validAPI}: BasicQuizProps): React.JSX.Element {
 
     return <div className="Basic-Quiz-Page">
         
-        <header className="Basic-Quiz-Navbar">
-            <div className="Basic-Page-Navigation-Buttons">
-                <Link to={"/"}>
-                <Button>Home</Button>
-                </Link>
-
-                <Link to={"/DetailedQuiz"}>
-                    <Button>Detailed Quiz</Button>
-                </Link>
-            </div>
-        </header>
-        
 
         <div className="Basic-Progress-Bar-Wrapper">
             <div className="Basic-Progress-Bar-Border">
