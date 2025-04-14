@@ -6,11 +6,6 @@
     background-color: var(--main-background-color);
 }
 
-#Homepage-Title{
-    display: flex;
-    margin-left: 40vw; 
-}
-
 .Homepage-Container { 
     display: flex;
     flex-direction: row;
@@ -27,7 +22,6 @@
     border: solid;
     border-radius: 2vh;
     text-align: left;
-    /* background-color:chocolate; */
     background-color: whitesmoke;
     min-height: 100%;
   }  

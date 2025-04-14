@@ -2,14 +2,40 @@
     --main-background-color: lightblue;
     --progress-bar-color: white;
 
-    --navbar-height: 8vh;
+    --navbar-height: 15vh;
 }
 
 .App {
+  display: grid;
   text-align: center;
   font-size: 1.3vw;
   /* background-color: #806550; */
   background-color: var(--main-background-color);
+}
+
+#Navbar{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  height: var(--navbar-height);
+  background-color: #010409;
+}
+#Homepage-Title{
+  display: flex;
+  justify-self: center; 
+  align-self: center;
+  font-size: 200%;
+}
+#Navbar-Buttons-Wrapper{
+  display: flex;
+  align-self: top;
+  justify-self: flex-start;
+  padding-left: 1%;
+  padding-top: 1%;
+  gap: 0.2vw;
+}
+.Navbar-Buttons{
+  font-size: 100%;
 }
 
 @media (prefers-reduced-motion: no-preference) {
