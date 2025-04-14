@@ -1,9 +1,13 @@
 :root{ /*will hold things that can be used EVERYWHERE (all css files)*/
+    --page-heights: 60vh;
     --main-background-color: lightblue;
     --progress-bar-color: white;
 
     --navbar-height: 15vh;
     --navbar-color: rgb(0, 0, 104);
+
+    --API-key-height: 20vh;
+    background-color: var(--main-background-color);
 }
 
 .App {
@@ -12,7 +16,7 @@
   font-size: 1.3vw;
   /* background-color: #806550; */
   background-color: var(--main-background-color);
-  grid-template-rows: 0.25fr 2fr 1fr;
+  /* grid-template-rows: auto auto auto */
 }
 
 #Navbar{
@@ -55,13 +59,14 @@
   background-color: var(--main-background-color);
   justify-self: left;
   margin-left: 2vw;
-  /* height: 25vh; */
+  height: var(--API-key-height);
   
 }
 .Submit-Button{
-  font-size: 1.2vw
+  margin-top: 1%;
+  font-size: 100%;
 }
 #API-Input{
-  font-size:1.3vw;
+  font-size: 110%;
 
 }
