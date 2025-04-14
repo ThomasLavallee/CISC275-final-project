@@ -34,6 +34,7 @@
     border-radius: 4px;
     justify-self: start;
     width: 50%;
+    transition: 0.5s;
 }
 
 .Detailed-Quiz-Question-Wrapper{

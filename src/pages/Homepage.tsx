@@ -12,11 +12,6 @@ export function Homepage({setQuizType}: HomepageProps): React.JSX.Element {
 
     return <div>
         <div className = 'Whole-Homepage'>
-          {/* <header id="Homepage-Header">
-            
-          </header>
-          <h1 id="Homepage-Title">Career Portal</h1> 
-           */}  
           <div className='Homepage-Container'>
               <div className='Instruction-Container'>
                 <h4>Instructions:</h4>
