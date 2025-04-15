@@ -28,7 +28,6 @@ export function DetailedQuiz({validAPI}: DetailedQuizProps): React.JSX.Element {
 
     return <div className="Detailed-Quiz-Page">
         
-
         <div className="Detailed-Progress-Bar-Wrapper">
             <div className="Detailed-Progress-Bar-Border">
                 <div style={{ width: `${(questionNumber/DetailedQuestions.length) * 100}%` }} className="Detailed-Progress-Bar">{(questionNumber/DetailedQuestions.length) * 100}%</div>
@@ -36,7 +35,6 @@ export function DetailedQuiz({validAPI}: DetailedQuizProps): React.JSX.Element {
         </div>
 
         <div className="Detailed-Quiz-Question-Wrapper">
-            
             <DetailedQuestion questionNumber={questionNumber} question={DetailedQuestions[questionNumber-1]} options={DetailedOptions[questionNumber-1]} selected={answers[questionNumber-1]} 
             onSelect={(qn, selectedAnswer) => {
                 const updatedAnswers = [...answers];
@@ -51,8 +49,8 @@ export function DetailedQuiz({validAPI}: DetailedQuizProps): React.JSX.Element {
             </div>
         </div>
         <br></br>
-        
-        <Button className="Detailed-Quiz-Navigation-Button" disabled={(questionNumber!==numQuestions  || answers[questionNumber-1]==="") || !validAPI}>
+        {questionNumber===10 && answers[questionNumber-1]!=="" ? "Quiz Complete!" : ""}
+        <Button className="Detailed-Quiz-Navigation-Button" disabled={(questionNumber!==numQuestions && answers[questionNumber-1]!=="") || !validAPI}>
             <Link to={"/Results"} style={{color: "white", textDecoration: "none"}}>
             Get Results
             </Link>
