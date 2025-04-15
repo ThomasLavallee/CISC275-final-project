@@ -1,6 +1,6 @@
 .Basic-Quiz-Page{
     display: grid;
-    min-height:75vh;
+    min-height: var(--page-heights);;
     flex-wrap:wrap;
     gap: 2%;
     min-width:100vw;
