@@ -51,7 +51,7 @@ export function BasicQuiz({validAPI}: BasicQuizProps): React.JSX.Element {
             </div>
         </div>
         <br></br>
-        
+        {questionNumber===10 && answers[questionNumber-1]!=="" ? "Quiz Complete!" : ""}
         <Button className="Basic-Quiz-Navigation-Button" disabled={(questionNumber!==numQuestions  && answers[questionNumber-1]!=="") || !validAPI}>
             <Link to={"/Results"} style={{color: "white", textDecoration: "none"}}>
             Get Results
