@@ -1,5 +1,5 @@
 import OpenAI from "openai";
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 
 interface ResultsPageProps {
@@ -17,6 +17,7 @@ const basicPrompt: string = "This is a list of ten questions and answers that a 
 const detailedPrompt: string = "This is a list of ten questions and answers that a user has selected. Using this list, generate five career choices for this user that would best fit based on their answers to the questions. With each career option, provide a lengthy explanation of what the career is, its average salary, and what characteristics the user has that makes them a good fit. After this, generate two industries the user might be interested in. With each industry, provide a lengthy explanation of what the industry is, as well as what characteristics make the user a good fit. Your output should only be the five careers, explanations, salaries, and characteristics, as well as two industries and explanations. Do not add anything else to your response.";
 
 export function ResultsPage({quizType, userAnswers, connection}: ResultsPageProps): React.JSX.Element {
+    const [results, setResults] = useState<string>("");
 
     // Make sure all questions are answered + are in correct format before sending them out
     function checkAnswerFormat() {
@@ -46,6 +47,7 @@ export function ResultsPage({quizType, userAnswers, connection}: ResultsPageProp
         }
     }
 
+    // Return a string containing the results
     async function getAnswers() {  
         // Make sure all answers are received
         let allFormatted: boolean = checkAnswerFormat();
@@ -71,17 +73,26 @@ export function ResultsPage({quizType, userAnswers, connection}: ResultsPageProp
                 ],
             });
 
-            alert(completion.choices[0].message.content);
+            const report: string | null = completion.choices[0].message.content;
+
+            if (report !== null) {
+                setResults(report);
+            }
+            
+            alert(report);
         } else {
             alert("Unformatted");
         }
     }
 
+   
+    
+
     return <div className="Results-Page">
         {quizType} Results Page
 
-        <Button onClick={checkAnswerFormat}>Show Answers</Button>
         <Button onClick={getAnswers}>Call GPT</Button>
+        {results}
     </div>
 
 }
