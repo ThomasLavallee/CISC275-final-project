@@ -31,7 +31,7 @@ export function BasicQuiz({validAPI}: BasicQuizProps): React.JSX.Element {
 
         <div className="Basic-Progress-Bar-Wrapper">
             <div className="Basic-Progress-Bar-Border">
-                <div style={{ width: `${(questionNumber/basicQuestions.length) * 100}%` }} className="Basic-Progress-Bar">{(questionNumber/basicQuestions.length) * 100}%</div>
+                <div style={{ width: `${(questionNumber/basicQuestions.length) * 100}%`, transition: "width 0.5s" }} className="Basic-Progress-Bar">{(questionNumber/basicQuestions.length) * 100}%</div>
             </div>
         </div>
 

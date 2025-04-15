@@ -72,6 +72,7 @@ function App(): React.JSX.Element {
     <HashRouter>
       <div className="App">
         <header id="Navbar">
+        <h2 style={{color: "white"}} id="Homepage-Title">Career Portal</h2> 
         <span id="Navbar-Buttons-Wrapper">
             <Link to="/">
               <Button className="Navbar-Buttons">Home</Button>
@@ -83,8 +84,6 @@ function App(): React.JSX.Element {
               <Button className="Navbar-Buttons">Detailed Quiz</Button>
             </Link>
           </span>
-          
-          <h2 style={{color: "white"}} id="Homepage-Title">Career Portal</h2> 
           
         </header>
         
@@ -104,8 +103,6 @@ function App(): React.JSX.Element {
             <Form.Control id="API-Input" type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
             <Button className="Submit-Button" type="button" onClick={setupAPI}>Submit</Button>
           </Form>
-          
-
           Developed By:
           Thomas Lavallee,
           Brayan Hernandez,

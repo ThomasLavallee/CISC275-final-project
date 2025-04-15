@@ -1,6 +1,6 @@
 .Detailed-Quiz-Page{
     display: grid;
-    min-height:75vh;
+    min-height: var(--page-heights);;
     flex-wrap:wrap;
     gap: 2%;
     min-width:100vw;
@@ -34,6 +34,7 @@
     border-radius: 4px;
     justify-self: start;
     width: 50%;
+    transition: 0.5s;
 }
 
 .Detailed-Quiz-Question-Wrapper{
