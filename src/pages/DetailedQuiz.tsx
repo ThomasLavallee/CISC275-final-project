@@ -5,11 +5,12 @@ import { Button } from 'react-bootstrap';
 import './DetailedQuizComponentStyles.css';
 
 interface DetailedQuizProps {
-    validAPI: boolean
+    validAPI: boolean,
+    setAppAnswers: (newAnswer: string) => void
 }
 
 
-export function DetailedQuiz({validAPI}: DetailedQuizProps): React.JSX.Element {
+export function DetailedQuiz({validAPI, setAppAnswers}: DetailedQuizProps): React.JSX.Element {
     const [questionNumber, setQuestionNumber] = useState<number>(1)
     // All ten of the Detailed questions given in this quiz
     const DetailedQuestions = ["What type of work environment do you prefer?", "What motivates you the most in a job?","What kind of stuff interests you most?","Which school subject did you enjoy the most?","What is your ideal work schedule?","What role do you usually take in group projects?","How do you feel about public speaking?","Which of these tools or resources interests you the most?","What would your ideal boss be like?","Which of these activities sounds most enjoyable?"]
@@ -24,6 +25,8 @@ export function DetailedQuiz({validAPI}: DetailedQuizProps): React.JSX.Element {
     for (let i = 0; i < numQuestions; i++) {
         DetailedReport += DetailedQuestions[i] + " " + answers[i] + ".\n"
     }
+    // Update answers in App
+    setAppAnswers(DetailedReport);
     if (DetailedReport) {}
 
     return <div className="Detailed-Quiz-Page">
@@ -50,7 +53,7 @@ export function DetailedQuiz({validAPI}: DetailedQuizProps): React.JSX.Element {
         </div>
         <br></br>
         {questionNumber===10 && answers[questionNumber-1]!=="" ? "Quiz Complete!" : ""}
-        <Button className="Detailed-Quiz-Navigation-Button" disabled={(questionNumber!==numQuestions && answers[questionNumber-1]!=="") || !validAPI}>
+        <Button className="Detailed-Quiz-Navigation-Button" disabled={(questionNumber!==numQuestions || answers[questionNumber-1]==="") || !validAPI}>
             <Link to={"/Results"} style={{color: "white", textDecoration: "none"}}>
             Get Results
             </Link>
