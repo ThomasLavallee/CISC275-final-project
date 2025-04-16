@@ -21,6 +21,7 @@ function App(): React.JSX.Element {
   const [key, setKey] = useState<string>(keyData); //for api key input
   const [APIValid, setAPIValid] = useState<boolean>(false); // Checks if API key is valid
   const [currentQuiz, setQuizType] = useState<string>("Basic"); // Track quiz type taken
+  const [answers, setAnswers] = useState<string>("");
 
   // API connection, will get set when view results is clicked
   let client = new OpenAI({apiKey: key, dangerouslyAllowBrowser: true});;
@@ -89,9 +90,9 @@ function App(): React.JSX.Element {
         
           <Routes>
             <Route path="/" element={<Homepage setQuizType={setQuizType}/>}></Route>
-            <Route path="/BasicQuiz" element={<BasicQuiz validAPI={APIValid}/>}></Route>
-            <Route path="/DetailedQuiz" element={<DetailedQuiz validAPI={APIValid}/>}></Route>
-            <Route path='/Results' element={<ResultsPage quizType={currentQuiz} userAnswers='' connection={client}/>}></Route>
+            <Route path="/BasicQuiz" element={<BasicQuiz validAPI={APIValid} setAppAnswers={setAnswers}/>}></Route>
+            <Route path="/DetailedQuiz" element={<DetailedQuiz validAPI={APIValid} setAppAnswers={setAnswers}/>}></Route>
+            <Route path='/Results' element={<ResultsPage quizType={currentQuiz} userAnswers={answers} connection={client}/>}></Route>
           </Routes>
 
         <footer className="API-Key-Menu">

@@ -5,11 +5,12 @@ import { Button } from 'react-bootstrap';
 import './BasicQuizComponentStyles.css';
 
 interface BasicQuizProps {
-    validAPI: boolean
+    validAPI: boolean,
+    setAppAnswers: (newAnswer: string) => void
 }
 
 
-export function BasicQuiz({validAPI}: BasicQuizProps): React.JSX.Element {
+export function BasicQuiz({validAPI, setAppAnswers}: BasicQuizProps): React.JSX.Element {
     const [questionNumber, setQuestionNumber] = useState<number>(1)
     // All ten of the basic questions given in this quiz
     const basicQuestions = ["Do you like working with people?", "Would you rather design or build something?", "Do you like working creatively?","Do you like leading others?","Do you prefer routine or variety at work?","Do you like working in hands-on environments?","Are you comfortable using technology?","Do you enjoy writing?","Would you rather work alone or in a team?","Do you enjoy public speaking?"]
@@ -24,6 +25,8 @@ export function BasicQuiz({validAPI}: BasicQuizProps): React.JSX.Element {
     for (let i = 0; i < numQuestions; i++) {
         basicReport += basicQuestions[i] + " " + answers[i] + ".\n"
     }
+    // Update answers in the app file
+    setAppAnswers(basicReport);
     if (basicReport) {}
 
     return <div className="Basic-Quiz-Page">
