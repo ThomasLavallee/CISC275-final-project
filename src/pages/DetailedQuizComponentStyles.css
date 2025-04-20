@@ -43,12 +43,16 @@
     grid-template-rows: 2fr 1fr; 
     gap: 0%;
     min-width: 50vw; 
-    max-width: 70vw;
+    max-width: 80vw;
+    background-image: var(--cool-gradient);
     align-self: center;
     justify-self: center;
     border: solid;
     border-radius: 6px;
     border-width: 2px;
+
+    color: white; /* This is for text */
+    border: var(--cool-gradient);
 }
 
 #Detailed-Quiz-Prev-Next-Wrapper{
@@ -63,6 +67,29 @@
     align-self: center;
     justify-self: center;
     width: 80%;
+    background-color: transparent;
+
+    position: relative;
+}
+#Detailed-Quiz-Prev-Next-Button:hover{
+    color: rgb(198, 198, 198);
+}
+#Detailed-Quiz-Prev-Next-Button::after{ /* creates psuedo element as child of prev next button */
+    content: "";
+    position: absolute; /* so children use this element as reference point */
+    left: 50%; /* center the starting point */
+    bottom: -3%;
+    height: 10%; /* percent of button it's apart of's height */
+    background: transparent;
+    width: 0%; /* starts non-visible */
+    transform: translateX(-50%);
+    transition: 0.4s;
+    border-radius:4px;
+}
+#Detailed-Quiz-Prev-Next-Button:hover::after{
+    width: 100%;
+    transform: translateX(-50%);
+    background: white;
 }
 
 
@@ -76,6 +103,7 @@
     font-size: 100%;
     padding-bottom: 2vh;    
     min-width: 5vw;
+    max-width: 80%;
     width:fit-content;
     justify-self: center;
 
