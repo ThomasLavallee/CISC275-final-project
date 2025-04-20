@@ -15,7 +15,7 @@ export function QuizDescription({quizType, description, setQuizType}: QuizDescri
     const formattedTitle: string = quizType.replace(regex, ` $1`);;
 
     return <div className="Quiz-Description">
-        <h4>{formattedTitle}:</h4>
+        <h4 className="Homepage-Description-Headers">{formattedTitle}:</h4>
         <div className="Description-Container">
             <ul className="Quiz-Description-Text">
             {

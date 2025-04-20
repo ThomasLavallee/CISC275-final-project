@@ -20,6 +20,9 @@
     max-height: 80%;
   }  
 
+.Homepage-Description-Headers{
+    color: black;
+}
 .Quiz-Description{
     padding-right: 1%;
     height: 100%;

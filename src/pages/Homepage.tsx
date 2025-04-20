@@ -12,7 +12,7 @@ export function Homepage({setQuizType}: HomepageProps): React.JSX.Element {
 
     return <div className='Homepage-Container'>
             <div className='Instruction-Container'>
-              <h4>Instructions:</h4>
+              <h4 className="Homepage-Description-Headers">Instructions:</h4>
               <ol className='Homepage-Instructions'>
                 {
                   quizInstructions.map((currentInstruction: string) => {

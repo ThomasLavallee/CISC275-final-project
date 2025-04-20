@@ -44,11 +44,16 @@
     gap: 0%;
     min-width: 40vw; 
     max-width: 60vw;
+    background-image: var(--cool-gradient);
     align-self: center;
     justify-self: center;
     border: solid;
     border-radius: 6px;
     border-width: 2px;
+
+    color: white; /* This is for text */
+    border: var(--cool-gradient);
+    
 }
 
 #Basic-Quiz-Prev-Next-Wrapper{
@@ -64,8 +69,30 @@
     align-self: center;
     justify-self: center;
     width: 90%;
-}
+    background-color: transparent;
 
+    position: relative;
+}
+#Basic-Quiz-Prev-Next-Button:hover{
+    color: rgb(198, 198, 198);
+}
+#Basic-Quiz-Prev-Next-Button::after{ /* creates psuedo element as child of prev next button */
+    content: "";
+    position:absolute; /* so children use this element as reference point */
+    left: 50%; /* center the starting point */
+    bottom: -3%;
+    height: 10%; /* percent of button it's apart of's height */
+    background: transparent;
+    width: 0%; /* starts non-visible */
+    transform: translateX(-50%);
+    transition: 0.4s;
+    border-radius:4px;
+}
+#Basic-Quiz-Prev-Next-Button:hover::after{
+    width: 100%;
+    transform: translateX(-50%);
+    background: white;
+}
 
 #Question-Label{ /* for each questions label*/
     /* font-size:1.4vw; */
