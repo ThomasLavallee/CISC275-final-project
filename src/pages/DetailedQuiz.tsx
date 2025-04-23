@@ -54,20 +54,24 @@ export function DetailedQuiz({validAPI, setAppAnswers}: DetailedQuizProps): Reac
         <br></br>
 
         {(questionNumber===numQuestions && answers[questionNumber-1]!=="" && !validAPI) ?
-            <span>Quiz Complete Please Enter Valid API Key to View Results</span>
+            <div className='Invalid-Key-Banner'>
+                Quiz Complete
+                <br></br>
+                Please Enter Valid API Key to View Results
+            </div>
             :
             <span></span>
         }
         
         {(questionNumber===numQuestions && answers[questionNumber-1]!=="" && validAPI) ? 
-            <span>Quiz Complete!
+            <div className="End-Quiz-Notification">Quiz Complete!
                 <br></br>
                 <Button className="Basic-Quiz-Navigation-Button" disabled={(questionNumber!==numQuestions  || answers[questionNumber-1]==="") || !validAPI}>
                     <Link to={"/Results"} style={{color: "white", textDecoration: "none"}}>
                     Get Results
                     </Link>
                 </Button>
-            </span>
+            </div>
         : 
         ""
         }
