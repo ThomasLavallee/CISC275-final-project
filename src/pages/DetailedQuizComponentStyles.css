@@ -30,7 +30,8 @@
 
 }
 .Detailed-Progress-Bar{
-    background-color: rgb(58, 237, 58);
+    background: linear-gradient(90deg, black, rgb(173, 191, 222));
+    color: white;
     border-radius: 4px;
     justify-self: start;
     width: 50%;
