@@ -129,3 +129,8 @@
     align-self:baseline;
     justify-self: center;
 }
+
+.Invalid-Key-Banner {
+    font-size: 1.5em;
+    font-weight: bold;
+}
