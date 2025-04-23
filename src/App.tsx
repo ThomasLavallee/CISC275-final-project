@@ -96,18 +96,24 @@ function App(): React.JSX.Element {
           </Routes>
 
         <footer className="API-Key-Menu">
-          <Form>
+          <Form id="API-Form-Wrapper">
+            <div>
             <Form.Label>API Key:</Form.Label>
             {
               (APIValid) ? <span style={{color: "Green"}}> API Key is Valid</span> : <span style={{color: "red"}}> API Key is Invalid</span>
             }
+            </div>
+            <br></br>
             <Form.Control id="API-Input" type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
             <Button className="Submit-Button" type="button" onClick={setupAPI}>Submit</Button>
+
+            <p>
+              Developed By:
+              Thomas Lavallee,
+              Brayan Hernandez,
+              Matthew Stone
+            </p>
           </Form>
-          Developed By:
-          Thomas Lavallee,
-          Brayan Hernandez,
-          Matthew Stone
         </footer>
       </div>
     </HashRouter>
