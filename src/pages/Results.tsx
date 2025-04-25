@@ -1,6 +1,7 @@
 import OpenAI from "openai";
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
+import "./ResultsComponentStyles.css";
 
 interface ResultsPageProps {
     quizType: string,
@@ -91,6 +92,14 @@ export function ResultsPage({quizType, userAnswers, connection}: ResultsPageProp
     return <div className="Results-Page">
         {quizType} Results Page
 
+        {(results === "") ?
+            <div className="Loading-Screen">
+
+
+            </div>
+            :
+            <span>results</span>
+        }   
         <Button onClick={getAnswers}>Call GPT</Button>
         {results}
     </div>
