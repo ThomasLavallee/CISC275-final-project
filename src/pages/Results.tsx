@@ -85,12 +85,11 @@ export function ResultsPage({quizType, userAnswers, connection}: ResultsPageProp
             alert("Unformatted");
         }
     }
-
-   
     
 
     return <div className="Results-Page">
-        {quizType} Results Page
+        <h3>{quizType} Results Page</h3>
+        <br></br>
 
         {(results === "") ?
             <div className="Loading-Screen">
@@ -98,10 +97,9 @@ export function ResultsPage({quizType, userAnswers, connection}: ResultsPageProp
 
             </div>
             :
-            <span>results</span>
+            <span>{results}</span>
         }   
         <Button onClick={getAnswers}>Call GPT</Button>
-        {results}
     </div>
 
 }
