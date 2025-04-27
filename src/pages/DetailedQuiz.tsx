@@ -67,6 +67,7 @@ export function DetailedQuiz({validAPI, setAppAnswers}: DetailedQuizProps): Reac
             </Link>
         </Button>
         </div>
+
         
     </div>
 }

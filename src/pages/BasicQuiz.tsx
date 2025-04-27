@@ -70,5 +70,6 @@ export function BasicQuiz({validAPI, setAppAnswers}: BasicQuizProps): React.JSX.
         </Button>
         </div>
         
+
     </div>
 }

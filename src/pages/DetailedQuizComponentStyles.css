@@ -128,10 +128,12 @@
     align-self:baseline;
     justify-self: center;
 }
-
 #Detailed-Quiz-Complete-Message{
     font-size: 200%; 
     outline: solid;
     outline-width: 2px;
     outline-color: white;
+.Invalid-Key-Banner {
+    font-size: 1.5em;
+    font-weight: bold;
 }
