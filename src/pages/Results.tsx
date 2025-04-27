@@ -89,10 +89,14 @@ export function ResultsPage({quizType, userAnswers, connection}: ResultsPageProp
     
 
     return <div className="Results-Page">
+        
+        <div id="loading-screen-overlay">
+
         {quizType} Results Page
 
         <Button onClick={getAnswers}>Call GPT</Button>
         {results}
+        </div>
     </div>
 
 }

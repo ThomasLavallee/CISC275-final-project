@@ -129,3 +129,10 @@
     align-self:baseline;
     justify-self: center;
 }
+
+#Basic-Quiz-Complete-Message{
+    font-size: 200%; 
+    outline: solid;
+    outline-width: 2px;
+    outline-color: white;
+}
