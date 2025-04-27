@@ -91,6 +91,7 @@ export function ResultsPage({quizType, userAnswers, connection}: ResultsPageProp
     }
 
     return <div className="Results-Page">
+
         <h3>{quizType} Results Page</h3>
         <br></br>
 
