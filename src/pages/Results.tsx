@@ -94,7 +94,12 @@ export function ResultsPage({quizType, userAnswers, connection}: ResultsPageProp
 
         <br></br>
 
-        {(results === "") ?
+
+        <div className="Loading-Screen">
+                <h3 style={{color: "white"}}>Generating Results...</h3>
+
+        </div>
+        {/* {(results === "") ?
             <div className="Loading-Screen">
                 
 
@@ -104,7 +109,7 @@ export function ResultsPage({quizType, userAnswers, connection}: ResultsPageProp
                 <h3>{quizType} Results Page</h3>
                 {results}
             </span>
-        }   
+        }    */}
     </div>
 
 }

@@ -1,5 +1,11 @@
 .Loading-Screen {
-    background-color: green;
-    min-width: 100vh;
-    min-height: 100vh;
+    background: radial-gradient(
+        circle at 50% 40%,
+        black 5%,
+        rgb(0, 21, 255) 6%,
+        rgb(0, 17, 201) 5%,
+        rgb(1, 1, 40) 8%
+    );
+    min-width: 100vw;
+    min-height: 110vh;  
 }
