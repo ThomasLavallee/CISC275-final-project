@@ -13,8 +13,8 @@ const numBasicQuestions: number = 10;
 const numDetailedQuestions: number = 10;
 
 // Prompts depending on quiz
-const basicPrompt: string = "This is a list of ten questions and answers that a user has selected. Using this list, generate five career choices for this user that would best fit based on their answers to the questions. With each career option, provide an explanation of what the career is, its average salary, and what characteristics the user has that makes them a good fit. Your output should only be the five careers, explanations, salaries, and characteristics. Do not add anything else to your response.";
-const detailedPrompt: string = "This is a list of ten questions and answers that a user has selected. Using this list, generate five career choices for this user that would best fit based on their answers to the questions. With each career option, provide a lengthy explanation of what the career is, its average salary, and what characteristics the user has that makes them a good fit. After this, generate two industries the user might be interested in. With each industry, provide a lengthy explanation of what the industry is, as well as what characteristics make the user a good fit. Your output should only be the five careers, explanations, salaries, and characteristics, as well as two industries and explanations. Do not add anything else to your response.";
+const basicPrompt: string = "This is a list of ten questions and answers that a user has selected. Using this list, generate five career choices for this user that would best fit based on their answers to the questions. With each career option, provide an explanation of what the career is, its average salary, and what characteristics the user has that makes them a good fit. Your output should only be the five careers, explanations, salaries, and characteristics. Add a '|' between each career option. Begin each career option with the name of the career followed by a colon; do not start with 'Career Option 1:' or '1:'. Within each career option, add a '^' at the beginning and the end of the salary section. Do not add anything else to your response.";
+const detailedPrompt: string = "This is a list of ten questions and answers that a user has selected. Using this list, generate five career choices for this user that would best fit based on their answers to the questions. With each career option, provide a lengthy explanation of what the career is, its average salary, and what characteristics the user has that makes them a good fit. Your output should only be the five careers, explanations, salaries, and characteristics. Add a '|' between each career option. Begin each career option with the name of the career followed by a colon; do not start with 'Career Option 1:' or '1:'. Within each career option, add a '^' at the beginning and the end of the salary section. Do not add anything else to your response.";
 
 export function ResultsPage({quizType, userAnswers, connection}: ResultsPageProps): React.JSX.Element {
     const [results, setResults] = useState<string>("");
@@ -84,6 +84,9 @@ export function ResultsPage({quizType, userAnswers, connection}: ResultsPageProp
         }
     }
 
+    // List of all 15 sections for the 5 careers (Each career has an explanation, salary, and characteristics)
+    let careerSections: string[] = results.split("|").map(career => career.trim().split("^").map(s => s.trim())).flat();
+  
     // Only call ChatGPT if we are on results page
     if (!hasInitialized.current) {
         getAnswers();
@@ -91,6 +94,43 @@ export function ResultsPage({quizType, userAnswers, connection}: ResultsPageProp
     }
 
     return <div className="Results-Page">
+        <div>
+            <div>
+                {careerSections[0]}
+                <br></br>
+                {careerSections[1]}
+                <br></br>
+                {careerSections[2]}
+            </div>
+            <div>
+                {careerSections[3]}
+                <br></br>
+                {careerSections[4]}
+                <br></br>
+                {careerSections[5]}
+            </div>
+            <div>
+                {careerSections[6]}
+                <br></br>
+                {careerSections[7]}
+                <br></br>
+                {careerSections[8]}
+            </div>
+            <div>
+                {careerSections[9]}
+                <br></br>
+                {careerSections[10]}
+                <br></br>
+                {careerSections[11]}
+            </div>
+            <div>
+                {careerSections[12]}
+                <br></br>
+                {careerSections[13]}
+                <br></br>
+                {careerSections[14]}
+            </div>
+        </div>
 
         <h3>{quizType} Results Page</h3>
         <br></br>
