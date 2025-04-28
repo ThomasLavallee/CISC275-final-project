@@ -92,7 +92,6 @@ export function ResultsPage({quizType, userAnswers, connection}: ResultsPageProp
 
     return <div className="Results-Page">
 
-        <h3>{quizType} Results Page</h3>
         <br></br>
 
         {(results === "") ?
@@ -101,7 +100,10 @@ export function ResultsPage({quizType, userAnswers, connection}: ResultsPageProp
 
             </div>
             :
-            <span>{results}</span>
+            <span>
+                <h3>{quizType} Results Page</h3>
+                {results}
+            </span>
         }   
     </div>
 
