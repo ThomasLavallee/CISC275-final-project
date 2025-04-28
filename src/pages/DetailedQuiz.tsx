@@ -52,12 +52,34 @@ export function DetailedQuiz({validAPI, setAppAnswers}: DetailedQuizProps): Reac
             </div>
         </div>
         <br></br>
-        {questionNumber===10 && answers[questionNumber-1]!=="" ? "Quiz Complete!" : ""}
-        <Button className="Detailed-Quiz-Navigation-Button" disabled={(questionNumber!==numQuestions || answers[questionNumber-1]==="") || !validAPI}>
-            <Link to={"/Results"} style={{color: "white", textDecoration: "none"}}>
-            Get Results
-            </Link>
-        </Button>
+
+        
+
+        <div id="Detailed-Quiz-Complete">
+        <p id="Detailed-Quiz-Complete-Message" style={{visibility: questionNumber === 10 && answers[questionNumber - 1] !== "" 
+            ? "visible" 
+            : "hidden"}}>Quiz Complete!</p>
+        </div>
+        <div style = {{visibility: questionNumber === 10 && answers[questionNumber - 1] !== "" 
+            ? "visible"
+            : "hidden"
+        }}>
+            {(questionNumber===numQuestions && answers[questionNumber-1]!=="" && !validAPI) ?
+            <div className='Invalid-Key-Banner'>
+                Quiz Complete 
+                <br></br>
+                Please Enter Valid API Key to View Results
+            </div>
+            :
+            <span></span>
+        }
+            <Button className="Detailed-Quiz-Navigation-Button" disabled={(questionNumber!==numQuestions || answers[questionNumber-1]==="") || !validAPI}>
+                <Link to={"/Results"} style={{color: "white", textDecoration: "none"}}>
+                Get Results
+                </Link>
+            </Button>
+        </div>
+
         
     </div>
 }

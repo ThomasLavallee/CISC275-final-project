@@ -1,6 +1,6 @@
 import OpenAI from "openai";
-import React, { useState } from "react";
-import { Button } from "react-bootstrap";
+import React, {useRef, useState } from "react";
+import "./ResultsComponentStyles.css";
 
 interface ResultsPageProps {
     quizType: string,
@@ -18,6 +18,7 @@ const detailedPrompt: string = "This is a list of ten questions and answers that
 
 export function ResultsPage({quizType, userAnswers, connection}: ResultsPageProps): React.JSX.Element {
     const [results, setResults] = useState<string>("");
+    const hasInitialized = useRef(false);
 
     // Make sure all questions are answered + are in correct format before sending them out
     function checkAnswerFormat() {
@@ -77,22 +78,22 @@ export function ResultsPage({quizType, userAnswers, connection}: ResultsPageProp
 
             if (report !== null) {
                 setResults(report);
-            }
-            
-            alert(report);
+            }            
         } else {
-            alert("Unformatted");
+            setResults("All Questions were not Answered");
         }
     }
 
     // List of all 15 sections for the 5 careers (Each career has an explanation, salary, and characteristics)
     let careerSections: string[] = results.split("|").map(career => career.trim().split("^").map(s => s.trim())).flat();
+  
+    // Only call ChatGPT if we are on results page
+    if (!hasInitialized.current) {
+        getAnswers();
+        hasInitialized.current = true;
+    }
 
     return <div className="Results-Page">
-        {quizType} Results Page
-
-        <Button onClick={getAnswers}>Call GPT</Button>
-        <br></br>
         <div>
             <div>
                 {careerSections[0]}
@@ -130,6 +131,18 @@ export function ResultsPage({quizType, userAnswers, connection}: ResultsPageProp
                 {careerSections[14]}
             </div>
         </div>
+
+        <h3>{quizType} Results Page</h3>
+        <br></br>
+
+        {(results === "") ?
+            <div className="Loading-Screen">
+                
+
+            </div>
+            :
+            <span>{results}</span>
+        }   
     </div>
 
 }

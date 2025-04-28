@@ -30,7 +30,8 @@
 
 }
 .Basic-Progress-Bar{
-    background-color: rgb(58, 237, 58);
+    background: linear-gradient(90deg, black, rgb(173, 191, 222));
+    color: white;
     border-radius: 4px;
     justify-self: start;
     width: 50%;
@@ -127,4 +128,16 @@
     height:fit-content;
     align-self:baseline;
     justify-self: center;
+}
+
+#Basic-Quiz-Complete-Message{
+    font-size: 200%; 
+    outline: solid;
+    outline-width: 2px;
+    outline-color: white;
+}
+  
+.Invalid-Key-Banner {
+    font-size: 1.5em;
+    font-weight: bold;
 }

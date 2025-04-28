@@ -54,12 +54,34 @@ export function BasicQuiz({validAPI, setAppAnswers}: BasicQuizProps): React.JSX.
             </div>
         </div>
         <br></br>
-        {questionNumber===10 && answers[questionNumber-1]!=="" ? "Quiz Complete!" : ""}
-        <Button className="Basic-Quiz-Navigation-Button" disabled={(questionNumber!==numQuestions  || answers[questionNumber-1]==="") || !validAPI}>
-            <Link to={"/Results"} style={{color: "white", textDecoration: "none"}}>
-            Get Results
-            </Link>
-        </Button>
         
+        <div id="Basic-Quiz-Complete">
+        <p id="Basic-Quiz-Complete-Message" style={{visibility: questionNumber === 10 && answers[questionNumber - 1] !== "" 
+            ? "visible" 
+            : "hidden"}}>Quiz Complete!</p>
+        </div>
+        <div style = {{visibility: questionNumber === 10 && answers[questionNumber - 1] !== "" 
+            ? "visible"
+            : "hidden"
+        }}>
+
+            {(questionNumber===numQuestions && answers[questionNumber-1]!=="" && !validAPI) ?
+                <div className='Invalid-Key-Banner'>
+                    Quiz Complete 
+                    <br></br>
+                    Please Enter Valid API Key to View Results
+                </div>
+                :
+                <span></span>
+            }
+
+            <Button className="Basic-Quiz-Navigation-Button" disabled={(questionNumber!==numQuestions  || answers[questionNumber-1]==="") || !validAPI}>
+                <Link to={"/Results"} style={{color: "white", textDecoration: "none"}}>
+                Get Results
+                </Link>
+            </Button>
+        </div>
+        
+
     </div>
 }
