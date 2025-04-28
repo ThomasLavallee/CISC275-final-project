@@ -7,8 +7,8 @@ interface HomepageProps {
 
 export function Homepage({setQuizType}: HomepageProps): React.JSX.Element {
   const quizInstructions: string[] = ["Select and navigate to the quiz you would like to take", "Answer each question in the quiz by selecting an option from the dropdown then selecting 'next'", "After answering all the questions, enter the API key and submit", "Then click 'View Results' to see your Career Quiz Results!"];  
-  const basicCareerDescription: string[] = ["Identify your career interests quickly", "Answer 20 simple questions in minutes", "Receive detailed report of career interests and personality traits"]
-  const detailedCareerDescription: string[] = ["Understand your career desires in detail", "Receive detailed report of career interests, personality traits, and workplace preferences", "Provides insights into specific roles, including required skills and typical work environments"];
+  const basicCareerDescription: string[] = ["Identify your career interests quickly", "Answer 10 simple questions quickly", "Receive detailed report of 5 careers you fit with explanations of the career", "Receive information on each career's average salary and characteristics that make you a good fit for the career"]
+  const detailedCareerDescription: string[] = ["Understand your career desires in detail", "Answer 16 questions in minutes", "Receive in-depth report of 5 careers with detailed explanations that fit you" , "Learn about each career's average salary and characteristics that make you a good fit"];
 
     return <div className='Homepage-Container'>
             <div className='Instruction-Container'>
