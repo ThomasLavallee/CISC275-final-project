@@ -70,14 +70,12 @@ export function BasicQuiz({validAPI, setAppAnswers}: BasicQuizProps): React.JSX.
                     Please Enter Valid API Key to View Results
                 </div>
                 :
-                <span></span>
+                <Button className="Basic-Quiz-Navigation-Button" disabled={(questionNumber!==numQuestions  || answers[questionNumber-1]==="") || !validAPI}>
+                    <Link to={"/Results"} style={{color: "white", textDecoration: "none"}}>
+                    Get Results
+                    </Link>
+                </Button>
             }
-
-            <Button className="Basic-Quiz-Navigation-Button" disabled={(questionNumber!==numQuestions  || answers[questionNumber-1]==="") || !validAPI}>
-                <Link to={"/Results"} style={{color: "white", textDecoration: "none"}}>
-                Get Results
-                </Link>
-            </Button>
         </div>
         
 

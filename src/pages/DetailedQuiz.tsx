@@ -110,13 +110,12 @@ export function DetailedQuiz({validAPI, setAppAnswers}: DetailedQuizProps): Reac
                     Please Enter Valid API Key to View Results
                 </div>
                 :
-                <span></span>
-            }
                 <Button className="Detailed-Quiz-Navigation-Button" disabled={(questionNumber!==numQuestions || answers[questionNumber-1]==="") || !validAPI} onClick={() => {saveAnswers()}}>
                     <Link to={"/Results"} style={{color: "white", textDecoration: "none"}}>
                     Get Results
                     </Link>
                 </Button>
+            }
         </div>
 
     </div>
