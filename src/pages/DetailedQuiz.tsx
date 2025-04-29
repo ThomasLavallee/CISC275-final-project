@@ -14,22 +14,22 @@ export function DetailedQuiz({validAPI, setAppAnswers}: DetailedQuizProps): Reac
     const [questionNumber, setQuestionNumber] = useState<number>(1)
     // All ten of the Detailed questions given in this quiz
     const DetailedQuestions = [
-        "What type of work environment do you prefer?", 
-        "What motivates you the most in a job?",
-        "What kind of stuff interests you most?",
-        "Which school subject did you enjoy the most?",
-        "What is your ideal work schedule?",
-        "What role do you usually take in group projects?",
-        "How do you feel about public speaking?",
-        "Which of these tools or resources interests you the most?",
-        "What would your ideal boss be like?",
-        "Which of these activities sounds most enjoyable?", 
-        "Analyzing data and identifying trends is something I find engaging and rewarding?",
-        "I typically approach problem-solving in a methodical and detail-oriented way, focusing on accuracy?",
-        "When working in a team, I naturally tend to take on the role of the organizer who ensures tasks are completed on time and to standard?",
-        "If I were leading a project, I would feel confident managing the tracking of progress and ensuring adherence to deadlines?",
-        "Identifying patterns and drawing logical conclusions comes naturally to me?",
-        "I enjoy learning new things?"
+        "What type of work environment do you prefer", 
+        "What motivates you the most in a job",
+        "What kind of stuff interests you most",
+        "Which school subject did you enjoy the most",
+        "What is your ideal work schedule",
+        "What role do you usually take in group projects",
+        "How do you feel about public speaking",
+        "Which of these tools or resources interests you the most",
+        "What would your ideal boss be like",
+        "Which of these activities sounds most enjoyable", 
+        "I enjoy analyzing data and trends",
+        "I enjoy problem-solving and fine-details",
+        "When working in a team, I tend to become the leader",
+        "I feel confident managing a team",
+        "I naturally find patterns in things",
+        "I enjoy learning new things"
     ]
     // All ten sets of answer choices for the questions in this quiz
     const DetailedOptions = [
@@ -54,14 +54,17 @@ export function DetailedQuiz({validAPI, setAppAnswers}: DetailedQuizProps): Reac
     const numQuestions: number = DetailedQuestions.length;
     // State :)
     const [answers, setAnswers] = useState<string[]>(Array(numQuestions).fill(""));
-    // Full string of questions and answers
-    let DetailedReport: string = ""
-    for (let i = 0; i < numQuestions; i++) {
-        DetailedReport += DetailedQuestions[i] + " " + answers[i] + ".\n"
+
+    function saveAnswers() {
+        // Full string of questions and answers
+        let DetailedReport: string = ""
+        for (let i = 0; i < numQuestions; i++) {
+            DetailedReport += DetailedQuestions[i] + " " + answers[i] + ".\n"
+        }
+        // Update answers in App
+        setAppAnswers(DetailedReport);
+        if (DetailedReport) {}  
     }
-    // Update answers in App
-    setAppAnswers(DetailedReport);
-    if (DetailedReport) {}
 
     return <div className="Detailed-Quiz-Page">
         
@@ -85,33 +88,35 @@ export function DetailedQuiz({validAPI, setAppAnswers}: DetailedQuizProps): Reac
                 <Button id="Detailed-Quiz-Prev-Next-Button" onClick={() => {setQuestionNumber(questionNumber+1)}} disabled={questionNumber===numQuestions || answers[questionNumber-1]===""}>Next</Button>
             </div>
         </div>
+
         <br></br>
 
         
 
         <div id="Detailed-Quiz-Complete">
-        <p id="Detailed-Quiz-Complete-Message" style={{visibility: questionNumber === numQuestions && answers[questionNumber - 1] !== "" 
-            ? "visible" 
-            : "hidden"}}>Quiz Complete!</p>
-        </div>
-        <div style = {{visibility: questionNumber === numQuestions && answers[questionNumber - 1] !== "" 
-            ? "visible"
-            : "hidden"
-        }}>
-            {(questionNumber===numQuestions && answers[questionNumber-1]!=="" && !validAPI) ?
-            <div className='Invalid-Key-Banner'>
-                Please Enter Valid API Key to View Results
-            </div>
-            :
-            <span></span>
-        }
-            <Button className="Detailed-Quiz-Navigation-Button" disabled={(questionNumber!==numQuestions || answers[questionNumber-1]==="") || !validAPI}>
-                <Link to={"/Results"} style={{color: "white", textDecoration: "none"}}>
-                Get Results
-                </Link>
-            </Button>
+            <p id="Detailed-Quiz-Complete-Message" style={{visibility: questionNumber === numQuestions && answers[questionNumber - 1] !== "" 
+                ? "visible" 
+                : "hidden"}}>Quiz Complete!
+            </p>
         </div>
 
-        
+        <div style = {{visibility: questionNumber === numQuestions && answers[questionNumber - 1] !== "" 
+                ? "visible"
+                : "hidden"
+            }}>
+                {(questionNumber===numQuestions && answers[questionNumber-1]!=="" && !validAPI) ?
+                <div className='Invalid-Key-Banner'>
+                    Please Enter Valid API Key to View Results
+                </div>
+                :
+                <span></span>
+            }
+                <Button className="Detailed-Quiz-Navigation-Button" disabled={(questionNumber!==numQuestions || answers[questionNumber-1]==="") || !validAPI} onClick={() => {saveAnswers()}}>
+                    <Link to={"/Results"} style={{color: "white", textDecoration: "none"}}>
+                    Get Results
+                    </Link>
+                </Button>
+        </div>
+
     </div>
 }
