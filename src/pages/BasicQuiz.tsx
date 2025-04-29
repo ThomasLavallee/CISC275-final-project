@@ -67,8 +67,6 @@ export function BasicQuiz({validAPI, setAppAnswers}: BasicQuizProps): React.JSX.
 
             {(questionNumber===numQuestions && answers[questionNumber-1]!=="" && !validAPI) ?
                 <div className='Invalid-Key-Banner'>
-                    Quiz Complete 
-                    <br></br>
                     Please Enter Valid API Key to View Results
                 </div>
                 :

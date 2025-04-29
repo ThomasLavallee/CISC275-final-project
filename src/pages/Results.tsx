@@ -10,7 +10,7 @@ interface ResultsPageProps {
 
 // Number of questions per quiz
 const numBasicQuestions: number = 10;
-const numDetailedQuestions: number = 10;
+const numDetailedQuestions: number = 16;
 
 // Prompts depending on quiz
 const basicPrompt: string = "This is a list of ten questions and answers that a user has selected. Using this list, generate five career choices for this user that would best fit based on their answers to the questions. With each career option, provide an explanation of what the career is, its average salary, and what characteristics the user has that makes them a good fit. Your output should only be the five careers, explanations, salaries, and characteristics. Add a '|' between each career option. Begin each career option with the name of the career followed by a colon; do not start with 'Career Option 1:' or '1:'. Within each career option, add a '^' at the beginning and the end of the salary section. Do not add anything else to your response.";
@@ -93,61 +93,53 @@ export function ResultsPage({quizType, userAnswers, connection}: ResultsPageProp
         hasInitialized.current = true;
     }
 
+    // Display loading screen while results are processing
     return <div className="Results-Page">
-        <div>
-            <div>
-                {careerSections[0]}
-                <br></br>
-                {careerSections[1]}
-                <br></br>
-                {careerSections[2]}
-            </div>
-            <div>
-                {careerSections[3]}
-                <br></br>
-                {careerSections[4]}
-                <br></br>
-                {careerSections[5]}
-            </div>
-            <div>
-                {careerSections[6]}
-                <br></br>
-                {careerSections[7]}
-                <br></br>
-                {careerSections[8]}
-            </div>
-            <div>
-                {careerSections[9]}
-                <br></br>
-                {careerSections[10]}
-                <br></br>
-                {careerSections[11]}
-            </div>
-            <div>
-                {careerSections[12]}
-                <br></br>
-                {careerSections[13]}
-                <br></br>
-                {careerSections[14]}
-            </div>
-        </div>
-
-        <br></br>
-
-
-        
         {(results === "") ?
             <div className="Loading-Screen">
-            <h3 style={{color: "white"}}>Generating Results...</h3>
-
-
+                <h3 style={{color: "white"}}>Generating Results...</h3>
             </div>
             :
             <span>
                 <h3>{quizType} Results Page</h3>
-                {results}
+                <div>
+                    <div>
+                        {careerSections[0]}
+                        <br></br>
+                        {careerSections[1]}
+                        <br></br>
+                        {careerSections[2]}
+                    </div>
+                    <div>
+                        {careerSections[3]}
+                        <br></br>
+                        {careerSections[4]}
+                        <br></br>
+                        {careerSections[5]}
+                    </div>
+                    <div>
+                        {careerSections[6]}
+                        <br></br>
+                        {careerSections[7]}
+                        <br></br>
+                        {careerSections[8]}
+                    </div>
+                    <div>
+                        {careerSections[9]}
+                        <br></br>
+                        {careerSections[10]}
+                        <br></br>
+                        {careerSections[11]}
+                    </div>
+                    <div>
+                        {careerSections[12]}
+                        <br></br>
+                        {careerSections[13]}
+                        <br></br>
+                        {careerSections[14]}
+                    </div>
+                </div>
             </span>
         }   
     </div>
-
 }

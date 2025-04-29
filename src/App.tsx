@@ -79,10 +79,10 @@ function App(): React.JSX.Element {
               <Button className="Navbar-Buttons">Home</Button>
             </Link>
             <Link to="/BasicQuiz">
-              <Button className="Navbar-Buttons">Basic Quiz</Button>
+              <Button className="Navbar-Buttons" onClick={() => {setQuizType("Basic")}}>Basic Quiz</Button>
             </Link>
             <Link to="/DetailedQuiz">
-              <Button className="Navbar-Buttons">Detailed Quiz</Button>
+              <Button className="Navbar-Buttons" onClick={() => {setQuizType("Detailed")}}>Detailed Quiz</Button>
             </Link>
           </span>
           
@@ -100,7 +100,7 @@ function App(): React.JSX.Element {
             <div>
             <Form.Label>API Key:</Form.Label>
             {
-              (APIValid) ? <span style={{color: "Green"}}> API Key is Valid</span> : <span style={{color: "red"}}> API Key is Invalid</span>
+              (APIValid) ? <span style={{color: "Green"}}> API Key is Valid</span> : <span style={{color: "Red"}}> API Key is Invalid</span>
             }
             </div>
             <br></br>
