@@ -79,10 +79,10 @@ function App(): React.JSX.Element {
               <Button className="Navbar-Buttons">Home</Button>
             </Link>
             <Link to="/BasicQuiz">
-              <Button className="Navbar-Buttons">Basic Quiz</Button>
+              <Button className="Navbar-Buttons" onClick={() => {setQuizType("Basic")}}>Basic Quiz</Button>
             </Link>
             <Link to="/DetailedQuiz">
-              <Button className="Navbar-Buttons">Detailed Quiz</Button>
+              <Button className="Navbar-Buttons" onClick={() => {setQuizType("Detailed")}}>Detailed Quiz</Button>
             </Link>
           </span>
           
