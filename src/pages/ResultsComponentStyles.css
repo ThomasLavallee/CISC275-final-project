@@ -1,11 +1,184 @@
 .Loading-Screen {
-    background: radial-gradient(
-        circle at 50% 40%,
+    position: relative;
+    /* background: radial-gradient(
+        circle at 50% 35%,
         black 5%,
         rgb(0, 21, 255) 6%,
         rgb(0, 17, 201) 5%,
-        rgb(1, 1, 40) 8%
-    );
+        rgb(3, 3, 59) 8%,
+        black
+    ); */
+
+    background: 
+        radial-gradient(
+            ellipse at 50% 35%,
+            rgba(0, 10, 50, 0.9) 0%,
+            black 70%
+        );
+    animation: warp-space 20s linear infinite;
+    
     min-width: 100vw;
     min-height: 110vh;  
+    overflow: hidden;
+    /* perspective: 1000px; */
+    --black-hole-size: min(30vw, 30vh); /* base size */
+    --accretion-disk-width: calc(var(--black-hole-size) * 2);
+    --accretion-disk-height: calc(var(--black-hole-size) * 0.45);
+    --inner-ring-width: calc(var(--black-hole-size) * 1.2);
+    --inner-ring-height: calc(var(--black-hole-size) * 0.4);
+    --orbit-offset: calc(var(--black-hole-size) * 0.2);
 }
+
+@keyframes warp-space {
+    from { background-position: 50% 50%, 0 0; }
+    to { background-position: 50% 50%, 100px 100px; }
+}
+
+/* for spinning accretion disk */
+.Loading-Screen::before{
+    content: "";
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: 
+        translate(-50%, -50%)
+        rotateX(60deg) /* Tilt disk backward */
+        rotateZ(0deg);
+    width: var(--accretion-disk-width);
+    height: var(--accretion-disk-height);
+    border: 2px solid rgba(0, 100, 255, 0.5);
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 100, 255, 0.8);
+    animation: spin3D 6s linear infinite; 
+
+    background: 
+        linear-gradient(
+            90deg,
+            rgba(200, 50, 255, 0.3) 10%,    /* Redshift (receding) */
+            rgba(0, 200, 255, 0.7) 50%,    /* Normal light */
+            rgba(0, 50, 255, 0.9) 100%     /* Blueshift (approaching) */
+        );
+    mix-blend-mode: screen;
+}
+
+.Loading-Screen::after{
+    content: "";
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: 
+        translate(-50%, -50%)
+        rotateX(45deg) /* Less tilted than outer disk */
+        rotateZ(0deg);
+    width: var(--inner-ring-width);  /* Now dynamic! */
+    height: var(--inner-ring-height);
+    border: 2px solid rgba(0, 150, 255, 0.7);
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(0, 150, 255, 0.9);
+    animation: spin3DReverse 4s linear infinite;
+
+    background: 
+        radial-gradient(
+            circle at 50% 50%,
+            transparent 60%,
+            rgba(0, 100, 255, 0.1) 70%,
+            transparent 80%
+        );
+    filter: blur(1px);
+}
+
+.Loading-Screen .black-hole-core {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    width: calc(var(--black-hole-size) * 0.5);
+    height: calc(var(--black-hole-size) * 0.5);
+    background: black;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2; /* Always stays on top */
+}
+.black-hole-core{
+    box-shadow: 
+        0 0 30px rgba(0, 50, 255, 0.7),
+        0 0 60px rgba(0, 20, 100, 0.5);
+    animation: horizon-pulse 4s infinite alternate;
+}
+
+.jet { 
+    position: absolute;
+    left: 50%;
+    width: calc(var(--black-hole-size) * 0.1);
+    height: calc(var(--black-hole-size) * 1.5);
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(0, 200, 255, 0.8),
+        transparent
+    );
+    transform: translateX(-50%);
+    filter: blur(5px);
+    z-index: 1;
+}
+.jet-top {
+    top: calc(35% - var(--black-hole-size) * 2);
+    transform-origin: bottom;
+    animation: jet-pulse 3s infinite alternate;
+}
+.jet-bottom {
+    bottom: calc(65% - var(--black-hole-size) * 2);
+    transform-origin: top;
+    animation: jet-pulse 3s infinite alternate-reverse;
+}
+
+.particle-stream{
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    width: calc(var(--black-hole-size) * 0.8);
+    height: 2px;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(0, 200, 255, 0.8), 
+        transparent);
+    transform: 
+        translate(-50%, -50%)
+        rotate(var(--angle))
+        translateX(calc(var(--black-hole-size) * 0.4));
+    animation: spiral-fall 3s linear infinite var(--delay);
+    opacity: 0.7;
+}
+
+/* Animations */
+@keyframes spin3D {
+    from { transform: translate(-50%, -50%) rotateX(60deg) rotateZ(0deg); }
+    to { transform: translate(-50%, -50%) rotateX(60deg) rotateZ(360deg); }
+}
+
+@keyframes spin3DReverse {
+    from { transform: translate(-50%, -50%) rotateX(45deg) rotateZ(360deg); }
+    to { transform: translate(-50%, -50%) rotateX(45deg) rotateZ(0deg); }
+}
+
+@keyframes horizon-pulse {
+    from { box-shadow: 0 0 20px rgba(0, 50, 255, 0.5); }
+    to { box-shadow: 0 0 50px rgba(0, 100, 255, 0.9); }
+}
+
+@keyframes spiral-fall {
+    0% { transform: translate(-50%, -50%) rotate(var(--angle)) translateX(calc(var(--black-hole-size) * 0.4)); }
+    100% { 
+        transform: translate(-50%, -50%) rotate(calc(var(--angle) + 360deg)) translateX(0); 
+        opacity: 0;
+    }
+}
+
+@keyframes jet-pulse {
+    from { opacity: 0.3; height: calc(var(--black-hole-size) * 1); }
+    to { opacity: 0.8; height: calc(var(--black-hole-size) * 2); }
+}
+
+/* @keyframes twinkle {
+    from { opacity: 0.3; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1.1); }
+} */

@@ -95,9 +95,18 @@ export function ResultsPage({quizType, userAnswers, connection}: ResultsPageProp
 
     // Display loading screen while results are processing
     return <div className="Results-Page">
+
         {(results === "") ?
             <div className="Loading-Screen">
                 <h3 style={{color: "white"}}>Generating Results...</h3>
+
+                <div className="black-hole-core"></div>
+                <div className="particle-stream" style={{ "--delay": "0s", "--angle": "0deg" } as React.CSSProperties}></div>
+                <div className="particle-stream" style={{ "--delay": "0.5s", "--angle": "120deg" } as React.CSSProperties}></div>
+                <div className="particle-stream" style={{ "--delay": "1s", "--angle": "240deg" } as React.CSSProperties}></div>
+
+                <div className="jet jet-top"></div>
+                <div className="jet jet-bottom"></div>
             </div>
             :
             <span>
