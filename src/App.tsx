@@ -100,7 +100,7 @@ function App(): React.JSX.Element {
             <div>
             <Form.Label>API Key:</Form.Label>
             {
-              (APIValid) ? <span style={{color: "Green"}}> API Key is Valid</span> : <span style={{color: "red"}}> API Key is Invalid</span>
+              (APIValid) ? <span style={{color: "Green"}}> API Key is Valid</span> : <span style={{color: "Red"}}> API Key is Invalid</span>
             }
             </div>
             <br></br>

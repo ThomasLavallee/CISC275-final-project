@@ -66,8 +66,6 @@ export function DetailedQuiz({validAPI, setAppAnswers}: DetailedQuizProps): Reac
         }}>
             {(questionNumber===numQuestions && answers[questionNumber-1]!=="" && !validAPI) ?
             <div className='Invalid-Key-Banner'>
-                Quiz Complete 
-                <br></br>
                 Please Enter Valid API Key to View Results
             </div>
             :
