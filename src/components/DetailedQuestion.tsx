@@ -21,7 +21,7 @@ export function DetailedQuestion({question, options, questionNumber, selected, o
         <div>
             <Form.Group controlId="question">
                 <h4 id="Question-Label">Question {questionNumber}:</h4>
-                    <Form.Label>{question}</Form.Label>
+                    <Form.Label>{question + ((questionNumber <= 10) ? "?": ".")}</Form.Label>
                     <Form.Select id="Question-Dropdown" value={selected} onChange={updateChoice}>
                         {options.map((option: string) => (
                             <option key={option} value={option}>
