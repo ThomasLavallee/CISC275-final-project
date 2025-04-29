@@ -55,11 +55,12 @@ export function DetailedQuiz({validAPI, setAppAnswers}: DetailedQuizProps): Reac
     // State :)
     const [answers, setAnswers] = useState<string[]>(Array(numQuestions).fill(""));
 
+    // Save answers when user has filled out quiz
     function saveAnswers() {
         // Full string of questions and answers
         let DetailedReport: string = ""
         for (let i = 0; i < numQuestions; i++) {
-            DetailedReport += DetailedQuestions[i] + " " + answers[i] + ".\n"
+            DetailedReport += DetailedQuestions[i] + "? " + answers[i] + ".\n"
         }
         // Update answers in App
         setAppAnswers(DetailedReport);
