@@ -13,8 +13,21 @@ const numBasicQuestions: number = 10;
 const numDetailedQuestions: number = 16;
 
 // Prompts depending on quiz
-const basicPrompt: string = "This is a list of ten questions and answers that a user has selected. Using this list, generate five career choices for this user that would best fit based on their answers to the questions. With each career option, provide an explanation of what the career is, its average salary, and what characteristics the user has that makes them a good fit. Your output should only be the five careers, explanations, salaries, and characteristics. Add a '|' between each career option. Begin each career option with the name of the career followed by a colon; do not start with 'Career Option 1:' or '1:'. Within each career option, add a '^' at the beginning and the end of the salary section. Do not add anything else to your response.";
-const detailedPrompt: string = "This is a list of ten questions and answers that a user has selected. Using this list, generate five career choices for this user that would best fit based on their answers to the questions. With each career option, provide a lengthy explanation of what the career is, its average salary, and what characteristics the user has that makes them a good fit. Your output should only be the five careers, explanations, salaries, and characteristics. Add a '|' between each career option. Begin each career option with the name of the career followed by a colon; do not start with 'Career Option 1:' or '1:'. Within each career option, add a '^' at the beginning and the end of the salary section. Do not add anything else to your response.";
+const basicPrompt: string = `
+    This is a list of ten questions and answers that a user has selected. Using this list, generate five career choices for this user that would best fit based on their answers 
+    to the questions. With each career option, provide an explanation of what the career is, its average salary, and what characteristics the user has that makes them a good fit.
+    Your output should only be the five careers, explanations, salaries, and characteristics. Add a '|' between each career option. Begin each career option with the name of the
+    career followed by a colon; do not start with 'Career Option 1:' or '1:'. Within each career option, add a '^' at the beginning of the salary section and a '@' at the 
+    end of the salary section. Do not add anything else to your response. Address the user as 'you'.
+`
+const detailedPrompt: string = `
+    This is a list of ten questions and answers that a user has selected. Using this list, generate five career choices for this user that would best fit based on their answers 
+    to the questions. With each career option, provide an explanation of what the career is, its average salary, and what characteristics the user has that makes them a good fit.
+    Your output should only be the five careers, explanations, salaries, and characteristics. Add a '|' between each career option. Begin each career option with the name of the
+    career followed by a colon; do not start with 'Career Option 1:' or '1:'. Within each career option, add a '^' at the beginning of the salary section and a '@' at the 
+    end of the salary section. Do not add anything else to your response. Address the user as 'you'. At the end include a section starting with a '~' and not a '=' explaining the user's 
+    personality type. Begin a section with a '=' describing 6 personality traits, separate each option with a comma and do not use numbers, capitalize each trait.
+`
 
 export function ResultsPage({quizType, userAnswers, connection}: ResultsPageProps): React.JSX.Element {
     const [results, setResults] = useState<string>("");
@@ -86,11 +99,64 @@ export function ResultsPage({quizType, userAnswers, connection}: ResultsPageProp
 
     // List of all 15 sections for the 5 careers (Each career has an explanation, salary, and characteristics)
     let careerSections: string[] = results.split("|").map(career => career.trim().split("^").map(s => s.trim())).flat();
-  
+    console.log(careerSections);
+
     // Only call ChatGPT if we are on results page
     if (!hasInitialized.current) {
         getAnswers();
+
         hasInitialized.current = true;
+    }
+
+    // Get each separate career
+    let careers: string[] = results.split("|");
+
+    // Get each careers description
+    let careerDescriptions = careers.map((career: string) => {
+        const endIndex = career.indexOf("^");
+
+        if (endIndex !== -1) {
+            return career.substring(0, endIndex);
+        }
+        return "";
+    })
+
+    // Get each careers salaries
+    let salaries = careers.map((career: string) => {
+        const startIndex = career.indexOf("^");
+        const endIndex = career.lastIndexOf("@");
+
+        if (startIndex !== -1 && endIndex !== -1 && startIndex < endIndex) {
+            return career.substring(startIndex + 1, endIndex);
+        }
+        return "";
+    });
+
+    // Get each careers reasoning
+    let reasonings = careers.map((career: string) => {
+        const startIndex = career.indexOf("@");
+        const endIndex = career.indexOf("~");
+
+        if (startIndex !== -1 && endIndex !== -1 && startIndex < endIndex) {
+            return career.substring(startIndex + 2, endIndex);
+        } else if (startIndex !== -1) {
+            return career.substring(startIndex + 2);
+        }
+        return "";
+    })
+
+    let personalityDescription = "";
+    let personalityTraits = "";
+    let personalityList: string[] = [];
+
+    if (quizType === "Detailed") {
+        // Get description of personality
+        personalityDescription = results.slice(results.indexOf("~") + 1, results.indexOf("="));
+
+        // Get list of personality traits
+        personalityTraits = results.slice(results.indexOf("=") + 1);
+        personalityList = personalityTraits.split(",")
+
     }
 
     // Display loading screen while results are processing
@@ -111,43 +177,27 @@ export function ResultsPage({quizType, userAnswers, connection}: ResultsPageProp
             :
             <span>
                 <h3>{quizType} Results Page</h3>
-                <div>
-                    <div>
-                        {careerSections[0]}
-                        <br></br>
-                        {careerSections[1]}
-                        <br></br>
-                        {careerSections[2]}
-                    </div>
-                    <div>
-                        {careerSections[3]}
-                        <br></br>
-                        {careerSections[4]}
-                        <br></br>
-                        {careerSections[5]}
-                    </div>
-                    <div>
-                        {careerSections[6]}
-                        <br></br>
-                        {careerSections[7]}
-                        <br></br>
-                        {careerSections[8]}
-                    </div>
-                    <div>
-                        {careerSections[9]}
-                        <br></br>
-                        {careerSections[10]}
-                        <br></br>
-                        {careerSections[11]}
-                    </div>
-                    <div>
-                        {careerSections[12]}
-                        <br></br>
-                        {careerSections[13]}
-                        <br></br>
-                        {careerSections[14]}
-                    </div>
-                </div>
+
+                <br></br>
+                {
+                    careers.map((career: string, currentIndex: number) => {
+                        return <div className="Career-Section">
+                            {careerDescriptions[currentIndex]}
+                            <br></br>
+                            {salaries[currentIndex]}
+                            <br></br>
+                            {reasonings[currentIndex]}
+                        </div>
+                    })
+                }
+
+                {personalityDescription}
+                <br></br>
+                {
+                    personalityList.map((trait) => {
+                        return <div>{trait}</div>;
+                    })
+                }
             </span>
         }   
     </div>
