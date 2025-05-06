@@ -25,8 +25,8 @@ const detailedPrompt: string = `
     to the questions. With each career option, provide an explanation of what the career is, its average salary, and what characteristics the user has that makes them a good fit.
     Your output should only be the five careers, explanations, salaries, and characteristics. Add a '|' between each career option. Begin each career option with the name of the
     career followed by a colon; do not start with 'Career Option 1:' or '1:'. Within each career option, add a '^' at the beginning of the salary section and a '@' at the 
-    end of the salary section. Do not add anything else to your response. Address the user as 'you'. At the end include a section starting with a '~' explaining the user's 
-    personality type, then list 6 personality traits beginning the section with a '='.
+    end of the salary section. Do not add anything else to your response. Address the user as 'you'. At the end include a section starting with a '~' and not a '=' explaining the user's 
+    personality type. Begin a section with a '=' describing 6 personality traits, separate each option with a comma and do not use numbers, capitalize each trait.
 `
 
 export function ResultsPage({quizType, userAnswers, connection}: ResultsPageProps): React.JSX.Element {
@@ -147,13 +147,16 @@ export function ResultsPage({quizType, userAnswers, connection}: ResultsPageProp
 
     let personalityDescription = "";
     let personalityTraits = "";
+    let personalityList: string[] = [];
 
     if (quizType === "Detailed") {
         // Get description of personality
-        personalityDescription = results.substring(results.indexOf("~") + 1, results.indexOf("="));
+        personalityDescription = results.slice(results.indexOf("~") + 1, results.indexOf("="));
 
         // Get list of personality traits
-        personalityTraits = results.substring(results.indexOf("="));
+        personalityTraits = results.slice(results.indexOf("=") + 1);
+        personalityList = personalityTraits.split(",")
+
     }
 
     // Display loading screen while results are processing
@@ -174,7 +177,6 @@ export function ResultsPage({quizType, userAnswers, connection}: ResultsPageProp
             :
             <span>
                 <h3>{quizType} Results Page</h3>
-                {results}
 
                 <br></br>
                 {
@@ -191,7 +193,11 @@ export function ResultsPage({quizType, userAnswers, connection}: ResultsPageProp
 
                 {personalityDescription}
                 <br></br>
-                {personalityTraits}
+                {
+                    personalityList.map((trait) => {
+                        return <div>{trait}</div>;
+                    })
+                }
             </span>
         }   
     </div>
