@@ -18,15 +18,15 @@ const basicPrompt: string = `
     to the questions. With each career option, provide an explanation of what the career is, its average salary, and what characteristics the user has that makes them a good fit.
     Your output should only be the five careers, explanations, salaries, and characteristics. Add a '|' between each career option. Begin each career option with the name of the
     career followed by a colon; do not start with 'Career Option 1:' or '1:'. Within each career option, add a '^' at the beginning of the salary section and a '@' at the 
-    end of the salary section. Do not add 
-    anything else to your response.
+    end of the salary section. Do not add anything else to your response. Address the user as 'you'.
 `
 const detailedPrompt: string = `
-    This is a list of questions and answers that a user has selected. Using this list, generate five career choices for this user that would best fit based on their
-    answers to the questions. With each career option, provide a lengthy explanation of what the career is, its average salary, and what characteristics the user has that makes 
-    them a good fit. At the end include a section explaining the user’s personality type, skills, 6 personality traits and ideal workplace environment. Your output should only
-    be the five careers, explanations, salaries, personality, skills, traits, and ideal workplace. Do not add anything else to your response, address the user as “you”. 
-    Separate information about each career with a '|' and start the personality section with a '%', also add a '^' at the beginning and end of the salary section.  
+    This is a list of ten questions and answers that a user has selected. Using this list, generate five career choices for this user that would best fit based on their answers 
+    to the questions. With each career option, provide an explanation of what the career is, its average salary, and what characteristics the user has that makes them a good fit.
+    Your output should only be the five careers, explanations, salaries, and characteristics. Add a '|' between each career option. Begin each career option with the name of the
+    career followed by a colon; do not start with 'Career Option 1:' or '1:'. Within each career option, add a '^' at the beginning of the salary section and a '@' at the 
+    end of the salary section. Do not add anything else to your response. Address the user as 'you'. At the end include a section starting with a '~' explaining the user's 
+    personality type, then list 6 personality traits beginning the section with a '='.
 `
 
 export function ResultsPage({quizType, userAnswers, connection}: ResultsPageProps): React.JSX.Element {
@@ -135,12 +135,26 @@ export function ResultsPage({quizType, userAnswers, connection}: ResultsPageProp
     // Get each careers reasoning
     let reasonings = careers.map((career: string) => {
         const startIndex = career.indexOf("@");
+        const endIndex = career.indexOf("~");
 
-        if (startIndex !== -1) {
-            return career.substring(startIndex + 1);
+        if (startIndex !== -1 && endIndex !== -1 && startIndex < endIndex) {
+            return career.substring(startIndex + 2, endIndex);
+        } else if (startIndex !== -1) {
+            return career.substring(startIndex + 2);
         }
         return "";
     })
+
+    let personalityDescription = "";
+    let personalityTraits = "";
+
+    if (quizType === "Detailed") {
+        // Get description of personality
+        personalityDescription = results.substring(results.indexOf("~") + 1, results.indexOf("="));
+
+        // Get list of personality traits
+        personalityTraits = results.substring(results.indexOf("="));
+    }
 
     // Display loading screen while results are processing
     return <div className="Results-Page">
@@ -167,11 +181,17 @@ export function ResultsPage({quizType, userAnswers, connection}: ResultsPageProp
                     careers.map((career: string, currentIndex: number) => {
                         return <div className="Career-Section">
                             {careerDescriptions[currentIndex]}
+                            <br></br>
                             {salaries[currentIndex]}
+                            <br></br>
                             {reasonings[currentIndex]}
                         </div>
                     })
                 }
+
+                {personalityDescription}
+                <br></br>
+                {personalityTraits}
             </span>
         }   
     </div>
