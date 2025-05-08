@@ -97,9 +97,6 @@ export function ResultsPage({quizType, userAnswers, connection}: ResultsPageProp
         }
     }
 
-    // List of all 15 sections for the 5 careers (Each career has an explanation, salary, and characteristics)
-    let careerSections: string[] = results.split("|").map(career => career.trim().split("^").map(s => s.trim())).flat();
-    console.log(careerSections);
 
     // Only call ChatGPT if we are on results page
     if (!hasInitialized.current) {
@@ -182,22 +179,33 @@ export function ResultsPage({quizType, userAnswers, connection}: ResultsPageProp
                 {
                     careers.map((career: string, currentIndex: number) => {
                         return <div className="Career-Section">
-                            {careerDescriptions[currentIndex]}
-                            <br></br>
-                            {salaries[currentIndex]}
+                            <h3 style={{fontSize: "127%", paddingTop: "2%"}}>
+                                {careerDescriptions[currentIndex].substring(0, careerDescriptions[currentIndex].indexOf(':') + 1).trim()}
+                            </h3>
+                            <p style={{ fontSize: "100%" }}>
+                                {careerDescriptions[currentIndex].substring(careerDescriptions[currentIndex].indexOf(':') + 1).trim()}
+                            </p>
+                            
+                            <p style={{fontWeight:"bold", display: "inline-block", paddingTop: "1%"}}>{salaries[currentIndex].substring(0, salaries[currentIndex].indexOf(':') + 1)}</p>
+                            <p style={{display: 'inline-block', paddingTop: "1%"}}>{salaries[currentIndex].substring(salaries[currentIndex].indexOf(':') + 1)}</p>
+
+
                             <br></br>
                             {reasonings[currentIndex]}
                         </div>
                     })
                 }
 
-                {personalityDescription}
-                <br></br>
-                {
-                    personalityList.map((trait) => {
-                        return <div>{trait}</div>;
-                    })
-                }
+                <div id="personality-wrapper" style={{paddingLeft: "10%", paddingRight: "10%"}}>
+                    <p style={{fontWeight:"bold"}}>{personalityDescription}</p>
+                    <div style={{paddingLeft: "10%", paddingRight: "10%"}}>
+                        {
+                            personalityList.map((trait) => {
+                                return <div>{trait}</div>;
+                            })
+                        }
+                    </div>
+                </div>
             </span>
         }   
     </div>
