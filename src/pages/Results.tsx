@@ -26,7 +26,8 @@ const detailedPrompt: string = `
     Your output should only be the five careers, explanations, salaries, and characteristics. Add a '|' between each career option. Begin each career option with the name of the
     career followed by a colon; do not start with 'Career Option 1:' or '1:'. Within each career option, add a '^' at the beginning of the salary section and a '@' at the 
     end of the salary section. Do not add anything else to your response. Address the user as 'you'. At the end include a section starting with a '~' and not a '=' explaining the user's 
-    personality type. Begin a section with a '=' describing 6 personality traits, separate each option with a comma and do not use numbers, capitalize each trait.
+    personality type. Begin a section with a '=' describing 6 personality traits, separate each option with a comma and do not use numbers, capitalize each trait, do not explain
+    each trait.
 `
 
 export function ResultsPage({quizType, userAnswers, connection}: ResultsPageProps): React.JSX.Element {
@@ -173,7 +174,7 @@ export function ResultsPage({quizType, userAnswers, connection}: ResultsPageProp
             </div>
             :
             <span>
-                <h3>{quizType} Results Page</h3>
+                <h1>{quizType} Quiz Results</h1>
 
                 <br></br>
                 {
@@ -196,16 +197,26 @@ export function ResultsPage({quizType, userAnswers, connection}: ResultsPageProp
                     })
                 }
 
+                {(personalityList.length > 0) ?
+
                 <div id="personality-wrapper" style={{paddingLeft: "10%", paddingRight: "10%"}}>
                     <p style={{fontWeight:"bold"}}>{personalityDescription}</p>
+
+                    Your Top Personality Traits:
+
                     <div style={{paddingLeft: "10%", paddingRight: "10%"}}>
-                        {
-                            personalityList.map((trait) => {
-                                return <div>{trait}</div>;
-                            })
-                        }
+                            {
+                                personalityList.map((trait) => {
+                                    return <div>{trait}</div>;
+                                })
+                            }
+                        
                     </div>
                 </div>
+                :
+                <span></span>
+
+                }
             </span>
         }   
     </div>
