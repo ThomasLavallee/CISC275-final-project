@@ -179,21 +179,25 @@ export function ResultsPage({quizType, userAnswers, connection}: ResultsPageProp
                 <br></br>
                 {
                     careers.map((career: string, currentIndex: number) => {
-                        return <div className="Career-Section">
-                            <h3 style={{fontSize: "127%", paddingTop: "2%"}}>
-                                {careerDescriptions[currentIndex].substring(0, careerDescriptions[currentIndex].indexOf(':') + 1).trim()}
-                            </h3>
-                            <p style={{ fontSize: "100%" }}>
-                                {careerDescriptions[currentIndex].substring(careerDescriptions[currentIndex].indexOf(':') + 1).trim()}
-                            </p>
-                            
-                            <p style={{fontWeight:"bold", display: "inline-block", paddingTop: "1%"}}>{salaries[currentIndex].substring(0, salaries[currentIndex].indexOf(':') + 1)}</p>
-                            <p style={{display: 'inline-block', paddingTop: "1%"}}>{salaries[currentIndex].substring(salaries[currentIndex].indexOf(':') + 1)}</p>
+                        if (career !== "") {
+                            return <div className="Career-Section">
+                                <h3 style={{fontSize: "127%", paddingTop: "2%"}}>
+                                    {careerDescriptions[currentIndex].substring(0, careerDescriptions[currentIndex].indexOf(':') + 1).trim()}
+                                </h3>
+                                <p style={{ fontSize: "100%" }}>
+                                    {careerDescriptions[currentIndex].substring(careerDescriptions[currentIndex].indexOf(':') + 1).trim()}
+                                </p>
+                                
+                                <p style={{fontWeight:"bold", display: "inline-block", paddingTop: "1%"}}>{salaries[currentIndex].substring(0, salaries[currentIndex].indexOf(':') + 1)}</p>
+                                <p style={{display: 'inline-block', paddingTop: "1%"}}>{salaries[currentIndex].substring(salaries[currentIndex].indexOf(':') + 1)}</p>
 
 
-                            <br></br>
-                            {reasonings[currentIndex]}
-                        </div>
+                                <br></br>
+                                {reasonings[currentIndex]}
+                            </div>
+                        } else {
+                            return <span></span>
+                        }
                     })
                 }
 
